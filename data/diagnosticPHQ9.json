@@ -1,0 +1,108 @@
+{
+  "title":"Patient Health Questionnaire (PHQ-9)",
+  "subtitle":"Over the last two weeks, how often have you been bothered by any of the following problems?",
+  "outOfScore":27,
+  "therapists":[
+    "Dr. Maltimore",
+    "Dr. Reha",
+    "Dr. Smith"
+  ],
+  "questions":[
+    {
+      "id": 1,
+      "label": "Little interest or pleasure in doing things?"
+    },
+    {
+      "id": 2,
+      "label": "Feeling down, depressed, or hopeless?"
+    },
+    {
+      "id": 3,
+      "label": "Trouble falling or staying asleep, or sleeping too much?"
+    },
+    {
+      "id": 4,
+      "label": "Feeling tired or having little energy?"
+    },
+    {
+      "id": 5,
+      "label": "Poor appetite or overeating?"
+    },
+    {
+      "id": 6,
+      "label": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down?"
+    },
+    {
+      "id": 7,
+      "label": "Trouble concentrating on things, such as reading the newspaper or watching television?"
+    },
+    {
+      "id": 8,
+      "label": "Moving or speaking so slowly that other people could have noticed? Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual?"
+    },
+    {
+      "id": 9,
+      "label": "Thoughts that you would be better off dead, or of hurting yourself in some way?"
+    }
+  ],
+  "choices":[
+    {
+      "label": "Not at all",
+      "points": 0
+    },
+    {
+      "label": "Several days",
+      "points": 1
+    },
+    {
+      "label": "More than half the days",
+      "points": 2
+    },
+    {
+      "label": "Nearly every day",
+      "points": 3
+    }
+  ],
+  "scale":[
+    {
+      "range":
+      {
+        "min": 0,
+        "max": 4
+      },
+      "severity": "none"
+    },
+    {
+      "range":
+      {
+        "min": 5,
+        "max": 9
+      },
+      "severity": "mild"
+    },
+    {
+      "range":
+      {
+        "min": 10,
+        "max": 14
+      },
+      "severity": "moderate"
+    },
+    {
+      "range":
+      {
+        "min": 15,
+        "max": 19
+      },
+      "severity": "moderately severe"
+    },
+    {
+      "range":
+      {
+        "min": 20,
+        "max": 27
+      },
+      "severity": "severe"
+    }
+  ]
+}
