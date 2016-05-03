@@ -1,0 +1,43 @@
+.score {
+  font-size: 1.4rem;
+}
+/* Unordered List - inline */
+.inline {
+  display: block;
+  font-size: 1.2rem;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+.inline > * {
+  display: inline-block;
+  margin: 0;
+}
+.inline li:first-child {
+  color: #111;
+  font-weight: bolder;
+  font-size: 1rem;
+  margin: .5rem 0;
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+.nav a {
+  white-space: nowrap;
+}
+
+/* results */
+.results{
+  background-color: #000;
+}
+.results em {
+  background-color: #fff;
+}
+.results em.none { background-color: #555; }
+.results em.mild { color: #ffcc00; }
+.results em.moderate { color: #d40c0c; }
+.results em.moderately-severe { color: #f00; }
+.results em.severe { color: #f00; }
