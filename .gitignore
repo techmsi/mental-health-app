@@ -34,3 +34,9 @@ coverage
 
 # Optional REPL history
 .node_repl_history
+
+# Project Specific
+.webpack-cache
+.hot
+public/build/*
+lint/index.html

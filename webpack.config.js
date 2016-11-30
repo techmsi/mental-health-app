@@ -1,53 +1,112 @@
-'use strict';
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const isNotProduction = process.env.NODE_ENV !== 'production';
+const appFolder = 'app';
 
-module.exports = {
-  devtool: 'eval-source-map',
-  entry: [
-    'webpack-hot-middleware/client?reload=true',
-    path.join(__dirname, 'app/main.js')
-  ],
-  output: {
-    path: path.join(__dirname, '/dist/'),
-    filename: '[name].js',
-    publicPath: '/'
+const nodeModulesPath = path.resolve(__dirname, 'node_modules');
+const buildPath = path.resolve(__dirname, 'public', 'build');
+const mainPath = path.resolve(__dirname, appFolder, 'client.js');
+const imgPath = path.resolve(__dirname, 'public', 'images');
+
+const productionOptimizationPlugins = [
+ new webpack.optimize.CommonsChunkPlugin('common.js'),
+ new webpack.optimize.DedupePlugin(),
+ new webpack.optimize.UglifyJsPlugin(),
+ new webpack.optimize.AggressiveMergingPlugin()
+]
+
+const devConfig = {
+  entry: ['react-hot-loader/patch', 'webpack-hot-middleware/client'],
+  hotUpdateChunkFilename: './.hot/[id].[hash].hot-update.js',
+  hotUpdateMainFilename: './.hot/[hash].hot-update.json',
+  babelHotPlugin: 'react-hot-loader/babel',
+  webpackCacheFolder:'./.webpack-cache/',
+  publicPathFolder: '/'
+}
+
+// Common rules
+const rules = [
+  {
+    test:/\.js$/,
+    exclude: [nodeModulesPath],
+    loader: 'babel',
+    query: {
+      compact: false,
+      cacheDirectory: isNotProduction ? devConfig.webpackCacheFolder : false,
+      presets: [ 'es2015', 'stage-2', 'react' ],
+      plugins: [
+       'transform-class-properties'
+      ]
+    }
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'app/index.tpl.html',
-      inject: 'body',
-      filename: 'index.html'
-    }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    //  Load React when needed without explicitly requiring it in code.
-    new webpack.ProvidePlugin({
-      'React': 'react',
-      'ReactDOM': 'react-dom',
-      'Immutable': 'immutable'
-    }),
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
+  {
+    test: /\.scss$/,
+    loaders: [
+      'style',
+      'css?-autoprefixer',
+      'postcss',
+      'sass?sourceMap',
+      ExtractTextPlugin.extract('css!postcss!sass')
+    ]
+  },
+  {
+    include: /\.json$/,
+    loaders: ['json-loader']
+  },
+];
+
+const baseConfig = {
+  entry: [ mainPath ],
+  output: {
+    path: buildPath,
+    publicPath: '/',
+    filename: 'js/bundle.js'
+  },
+  sassLoader: {
+    includePaths: [ 'scss/' ],
+    outputStyle: isNotProduction ? 'expanded' : 'compact',
+  },
+  postcss: [
+    autoprefixer({
+      browsers: ['last 2 versions', '> 1%']
     })
   ],
+  cache: true,
+  progress: true,
+  devtool: 'source-map',
+  watch: false,
   module: {
-    loaders: [{
-      test: /\.js?$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        "presets": ["react", "es2015", "stage-0", "react-hmre"]
-      }
-    }, {
-      test: /\.json?$/,
-      loader: 'json'
-    }, {
-      test: /\.css$/,
-      loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
-    }]
-  }
+    loaders: rules,
+  },
+  resolve: {
+    root: path.resolve(__dirname),
+    extensions: ['', '.json', '.js', '.jsx'],
+    alias: {
+      'containers': path.join(__dirname, 'app', 'containers'),
+    // images: path.join(__dirname, 'public/images'),
+    //   'react': 'react-lite',
+    //   'react-dom': 'react-lite'
+    }
+  },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new ExtractTextPlugin('css/style.css', {
+        allChunks: true
+    })
+  ]
 };
+
+
+const babelLoader = baseConfig.module.loaders.filter( o => o.loader === 'babel');
+
+baseConfig.output.hotUpdateMainFilename = devConfig.hotUpdateMainFilename;
+baseConfig.output.hotUpdateChunkFilename = devConfig.hotUpdateChunkFilename;
+baseConfig.output.publicPath = devConfig.publicPathFolder;
+baseConfig.plugins = [new webpack.HotModuleReplacementPlugin(), ...baseConfig.plugins];
+baseConfig.entry = [...devConfig.entry, ...baseConfig.entry];
+
+
+module.exports = baseConfig;
