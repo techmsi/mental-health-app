@@ -1,0 +1,14 @@
+$small: 500px;
+$medium: 900px;
+
+// Small screen size (sm)
+@media screen and (min-width: 0px) and (max-width: $small) {
+  @include introduction--sm();
+  @include unanswered--sm();
+}
+
+// Medium screen size (md)
+@media screen and (min-width: $medium) {
+  @include introduction--md();
+  @include unanswered--md();
+}

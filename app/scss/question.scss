@@ -1,0 +1,38 @@
+.question {
+  @extend .area;
+
+  &__label {
+    font-size: 1.6rem;
+    line-height: 2.3rem;
+    padding: 1rem;
+  }
+
+  &__footer {
+    background-color: #333;
+    border-radius: .25rem;
+    color: #fff;
+    font-size: .95rem;
+    font-weight: normal;
+    margin-top: 1rem;
+    padding: .5rem 1rem;
+
+    span {
+      display: inline-block;
+      position: relative;
+    }
+
+    &--number{
+      float: right;
+      &::before {
+        content: '#';
+      }
+    }
+
+    &--indicator {
+      &.answered::before {
+        content: 'answered ';
+        font-style: italic;
+      }
+    }
+  }
+}

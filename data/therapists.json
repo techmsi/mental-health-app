@@ -1,0 +1,52 @@
+{
+  "therapists":[
+    {
+      "id":"1",
+    	"name": "Felix Graves",
+    	"email": "vitae@convallis.org",
+    	"specialty": "Court Ordered Therapy and Assessments, Depression"
+    },
+    {
+      "id":"2",
+    	"name": "Isaac Downs",
+    	"email": "lacinia.orci.consectetuer@lacusvariuset.co.uk",
+    	"specialty": "Depression, Mood Disorder"
+    },
+    {
+      "id":"3",
+    	"name": "Noelani Holden",
+    	"email": "non.bibendum@tellussemmollis.net",
+    	"specialty": "Court Ordered Therapy and Assessments, Depression"
+    },
+    {
+      "id":"4",
+    	"name": "Chava Fleming",
+    	"email": "cras.convallis.convallis@NulladignissimMaecenas.edu",
+    	"specialty": "Depression"
+    },
+    {
+      "id":"5",
+    	"name": "Wang Waters",
+    	"email": "integer@tincidunt.co.uk",
+    	"specialty": "Court Ordered Therapy and Assessments"
+    },
+    {
+      "id":"6",
+    	"name": "Dorian D. Weaver",
+    	"email": "mattis.velit@ad.edu",
+    	"specialty": "Depression, Court Ordered Therapy and Assessments"
+    },
+    {
+      "id":"7",
+    	"name": "Nina C. Kirby",
+    	"email": "mattis.velit@dignissim.com",
+    	"specialty": "Court Ordered Therapy and Assessments"
+    },
+    {
+      "id":"8",
+    	"name": "Wyatt Y. Mcclure",
+    	"email": "justo@sollicitudin.net",
+    	"specialty": "Court Ordered Therapy and Assessments"
+    }
+  ]
+}

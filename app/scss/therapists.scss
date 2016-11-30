@@ -1,0 +1,72 @@
+
+.therapists {
+  background-color: #F7F4E5;
+  border-radius: .25rem;
+  font-size: 1.2rem;
+  line-height: 1rem;
+  margin: 1rem 0;
+  padding: 2rem;
+
+  &__sort {
+    button {
+      @extend .light-button-inline;
+      margin: 0 .5rem;
+    }
+  }
+
+  // Thanks message
+  &__thanks{
+    background: #fff;
+    border-radius: .25rem;
+    padding: 1rem;
+    line-height: 2rem;
+
+    &-name {
+      font-size: 1.4rem;
+      @extend .underline-button;
+    }
+  }
+  // Therapist when thanks message appears
+  &__thanks + &__link-name {
+    display: none;
+  }
+
+  // Therapist Item
+  &__link {
+    border-bottom: 3px dashed #dad4b6;
+    display: block;
+    line-height: 1.5rem;
+    padding: .5rem;
+
+    &:last-of-type {
+      border: none;
+    }
+
+    &-contact {
+      cursor: pointer;
+      @extend .light-button-inline;
+      margin-right: .5rem;
+    }
+
+    &-name {
+      display: inline-block;
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+    &-email {
+      border-bottom: 1px solid #111;
+      cursor: pointer;
+      margin: 0 1rem;
+    }
+    &-specialty {
+      font-style: italic;
+      color: #555;
+
+      &::before {
+        content: 'Specialty: ';
+        padding-right: 1rem;
+      }
+    }
+
+  }
+}
