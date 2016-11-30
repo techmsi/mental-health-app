@@ -1,0 +1,53 @@
+// Horizontally & Vertically centered
+.loading {
+  background: transparent;
+  position: fixed;
+  overflow: auto;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes spinner {
+  0% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.loading > div {
+  position: relative;
+  display: inline-block;
+  background: #fc0;
+  margin: 5px;
+  width: 40%;
+  height: 40%;
+  animation: spinner 1s cubic-bezier(0.2, 0.8, 0.2, 0.8) infinite;
+
+  &:nth-of-type(1) {
+    opacity: 0.9;
+    animation-delay: 0s;
+  }
+
+  &:nth-of-type(2) {
+    background: #f7f4e5;
+    opacity: 0.8;
+    animation-delay: 0.1s;
+  }
+
+  &:nth-of-type(3) {
+    background: #f7f4e5;
+    opacity: 0.7;
+    animation-delay: 0.3s;
+  }
+
+  &:nth-of-type(4) {
+    opacity: 0.6;
+    animation-delay: 0.2s;
+  }
+}

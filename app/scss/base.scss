@@ -1,0 +1,124 @@
+html {  font-size: 100%;}
+
+body {
+  box-sizing: border-box;
+  color: #111;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  width: 100%;
+}
+
+a {
+  color: #111;
+  text-decoration: none;
+}
+
+b {
+  font-weight: bold;
+}
+/* Form */
+label {
+	display: block;
+	font-size: 1.4rem;
+	font-weight: 200;
+	vertical-align: top;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+.light-button {
+  background-color: #f7f4e5;
+  border-radius: .35rem;
+  display: block;
+  color: #111;
+  font-size: 1.4rem;
+  margin: 0 auto;
+  padding: .5rem;
+  text-align: center;
+}
+
+
+.light-button-inline {
+  background-color: #dad4b6;
+  border-radius: .35rem;
+  color: #111;
+  font-size: 1rem;
+  padding: .25rem .5rem;
+  text-align: center;
+}
+
+.underline-button {
+  background-color: #fff;
+  font-size: 1.2rem;
+  color: #111;
+  margin: .5rem 1rem;
+  border-bottom: 1px solid #ffc800;
+  white-space: nowrap;
+}
+
+.dark-button {
+  display: block;
+  background-color: #333;
+  border-radius: .25rem;
+  color: #ffc800;
+  font-size: 1.5rem;
+  margin: .5rem;
+  padding: .5rem 1rem;
+  text-align: center;
+
+  &.active{
+    background-color: #fff;
+    font-size: 1rem;
+  }
+}
+
+/* Typography */
+p {
+  font-size: 1.4rem;
+}
+h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  background-color: #F7F4E5;
+  padding: 1rem;
+}
+h2 {
+  font-size: 1.4rem;
+  padding: 1rem;
+}
+h3 {
+  font-size: 1.6rem;
+}
+
+/* Areas */
+section, aside {
+  display: block;
+}
+
+.questionnaire {
+  &__notfound {
+    color: #d40c0c;
+    text-align: center;
+  }
+}
+
+.content {
+  padding: 0.5rem 1rem;
+  line-height: 2.3rem;
+  font-size: 1.6rem;
+}
+
+.area {
+  border: 1px solid #ddd;
+  border-radius: .25rem;
+  margin: 1rem 0.5rem;
+  padding: 0.1rem;
+}
+
+.columns {
+  display: flex;
+  flex-direction: column;
+}
