@@ -1,0 +1,27 @@
+
+/* Naviagation */
+
+.mainNav {
+  display: flex;
+  justify-content: flex-start;
+
+  &__item {
+    @extend .dark-button;
+  }
+
+}
+
+/* Nav - Prev/ next */
+.navPrevNext {
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    background-color: #fff;
+    font-size: 1.2rem;
+    color: #111;
+    margin: .5rem 1rem;
+    border-bottom: 1px solid #ffc800;
+    white-space: nowrap;
+  }
+}

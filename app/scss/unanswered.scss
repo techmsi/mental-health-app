@@ -1,0 +1,40 @@
+
+/* Unanswered - Unordered List - inline */
+.unanswered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+
+  &__link {
+    cursor: pointer;
+    @extend .underline-button;
+
+    &__header {
+      color: #111;
+      font-weight: bolder;
+      font-size: 1rem;
+      margin: .5rem 0;
+    }
+  }
+}
+
+// Called in media-queries.scss
+@mixin unanswered--sm() {
+  .unanswered {
+    justify-content: space-around;
+
+    &__header {
+      display: none;
+    }
+
+    &__link {
+      margin: .25rem;
+    }
+  }
+}
+
+@mixin unanswered--md() {
+
+}
