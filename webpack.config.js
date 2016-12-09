@@ -9,6 +9,7 @@ const appFolder = 'app';
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const buildPath = path.resolve(__dirname, 'public', 'build');
 const mainPath = path.resolve(__dirname, appFolder, 'client.js');
+const imgPath = path.resolve(__dirname, 'public', 'images');
 
 const productionOptimizationPlugins = [
  new webpack.optimize.CommonsChunkPlugin('common.js'),
@@ -26,6 +27,37 @@ const devConfig = {
   publicPathFolder: '/'
 }
 
+// Common rules
+const rules = [
+  {
+    test:/\.js$/,
+    exclude: [nodeModulesPath],
+    loader: 'babel',
+    query: {
+      compact: false,
+      cacheDirectory: isNotProduction ? devConfig.webpackCacheFolder : false,
+      presets: [ 'es2015', 'stage-2', 'react' ],
+      plugins: [
+       'transform-class-properties'
+      ]
+    }
+  },
+  {
+    test: /\.scss$/,
+    loaders: [
+      'style',
+      'css?-autoprefixer',
+      'postcss',
+      'sass?sourceMap',
+      ExtractTextPlugin.extract('css!postcss!sass')
+    ]
+  },
+  {
+    include: /\.json$/,
+    loaders: ['json-loader']
+  },
+];
+
 const baseConfig = {
   entry: [ mainPath ],
   output: {
@@ -34,53 +66,27 @@ const baseConfig = {
     filename: 'js/bundle.js'
   },
   sassLoader: {
-    includePaths: [ 'scss/' ]
+    includePaths: [ 'scss/' ],
+    outputStyle: isNotProduction ? 'expanded' : 'compact',
   },
+  postcss: [
+    autoprefixer({
+      browsers: ['last 2 versions', '> 1%']
+    })
+  ],
   cache: true,
   progress: true,
   devtool: 'source-map',
   watch: false,
   module: {
-    loaders: [
-      {
-        test:/\.js$/,
-        exclude: [nodeModulesPath],
-        loader: 'babel',
-        query: {
-          compact: false,
-          cacheDirectory: isNotProduction ? devConfig.webpackCacheFolder : false,
-          presets: [ 'es2015', 'stage-2', 'react' ],
-          plugins: [
-           'transform-class-properties'
-          ]
-        }
-      },
-      {
-        test: /\.scss$/,
-        loaders: [
-          'style',
-          'css?sourceMap',
-          'sass?sourceMap',
-          ExtractTextPlugin.extract('css!sass')
-        ]
-      },
-      {
-        include: /\.json$/,
-        loaders: ['json-loader']
-      }
-    ],
-    postcss: [
-      autoprefixer({
-        browsers: ['last 2 versions', '> 1%']
-      })
-    ]
+    loaders: rules,
   },
   resolve: {
     root: path.resolve(__dirname),
     extensions: ['', '.json', '.js', '.jsx'],
     alias: {
-      'containers': path.join(__dirname, 'app', 'containers')
-    // images: path.join(__dirname, 'public/images')
+      'containers': path.join(__dirname, 'app', 'containers'),
+    // images: path.join(__dirname, 'public/images'),
     //   'react': 'react-lite',
     //   'react-dom': 'react-lite'
     }

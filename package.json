@@ -5,11 +5,11 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack",
-    "build-dev": "webpack -w",
-    "lint": "npm run lint:watch && npm run lint:output",
+    "build:dev": "webpack-dashboard node server",
+    "lint": "npm run lint:cli && npm run lint:output",
     "lint:cli": "eslint app --format=node_modules/eslint-codeframe-formatter",
     "lint:output": "eslint app -o ./lint/index.html -f html",
-    "lint:watch":"esw app -w --format=node_modules/eslint-codeframe-formatter",
+    "lint:watch": "esw app -w --format=node_modules/eslint-codeframe-formatter",
     "postinstall": "npm run lint",
     "ps": "npm run build",
     "start": "node server",
@@ -67,7 +67,7 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.1",
+    "webpack": "^1.14.0",
     "webpack-dashboard": "^0.2.0",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.13.2"
