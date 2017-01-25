@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Prototype for a mental health app using redux",
   "main": "server.js",
+  "engines": {
+    "node": "6.x"
+  },
   "scripts": {
     "build": "webpack",
     "build:dev": "webpack-dashboard node server",
