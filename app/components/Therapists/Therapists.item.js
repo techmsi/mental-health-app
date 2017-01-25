@@ -7,8 +7,12 @@ import { Link } from 'react-router';
 class Therapist extends Component {
 
   render() {
-    const { id, specialty, name, email, addLink, params: { therapistId } } = this.props;
-    const ThankYouMessage = <p className="therapists__thanks"> Thank you for choosing a therapist. <span className="therapists__thanks-name">{name}</span> will be contacted on your behalf. </p>;
+    const { id, specialty, name, email, image, addLink, params: { therapistId } } = this.props;
+    const ThankYouMessage = (<p className="therapists__thanks">
+    Thank you for choosing a therapist.
+    <img src={ `/images/headshots/${image}` } alt="" />
+      <span className="therapists__thanks-name">{name}</span> will be contacted on your behalf.
+    </p>);
 
     return (
       <div id={ `therapist-link-${id}` } className="therapists__link">
