@@ -1,11 +1,10 @@
 // Contianer - Smart Component
 import React, { Component } from 'react';
+// Redux wiring
+import { connect } from 'react-redux';
 
 // Components
 import { NavBar, mapDispatchToPropsHelper } from './imports';
-
-// Redux wiring
-import { connect } from 'react-redux';
 
 class MainView extends Component {
   render() {

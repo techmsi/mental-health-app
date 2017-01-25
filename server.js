@@ -11,8 +11,8 @@ if (isNotProduction) {
   webpackDevHelper.useWebpackMiddleware(app);
 }
 
-app.use(express.static(__dirname + 'public'));
-app.use(express.static(__dirname + '/build'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public', 'build')));
 
 // Body Parser - POST request middleware
 app.use(bodyParser.json()); // support json encoded bodies
