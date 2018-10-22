@@ -7,12 +7,21 @@ As a patient, I would like to take the PHQ-9 depression screener and get the ass
 ## Prerequisites
 - node must be installed
 
-## Install
+## Run server in one tab
+
+```
+cd mental-health-app/server
+npm install
+npm start
+
+```
+
+## Run app in a different tab
 
 ```
 cd mental-health-app
-npm install
-npm start
+yarn install
+yarn start
 
 ```
 
@@ -24,6 +33,9 @@ Go to http://localhost:3001
 * `/api/phq9`
   * GETS PHQ-9 questionnaire
 
+* `/api/diagnosis`
+  * POSTS PHQ-9 score to receive diagnosis
+
 * `/api/therapists`
   * GETS a list of therapists
 
@@ -31,12 +43,13 @@ Go to http://localhost:3001
   * GETS an `n` number of therapists
 
 ### Technologies
+* Side Effects Management: redux-saga
 * State Management: redux
-* Front-end: React
-* Router: React Router
-* Transpiler & Bundler: Webpack + Babel 6
-  * Hot reloading enabled for redux as well
-* Backend: Node + Express
+* Router: react-router
+* Front-end: react
+* Styling: styled-components
+* Transpiler & Bundler: webpack + babel
+* Backend: node + express
 
 ### Screenshots
 
