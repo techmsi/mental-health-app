@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import UnasweredList from 'Questions/ui/UnansweredList';
 import { QuestionCard } from 'Questions/ui/Question';
 import { Header, SubTitle} from 'styles/Layout';
+import PageToPDF from 'PageToPDF/ui/PageToPDF';
 
 const QuestionListCard = question => <QuestionCard {...question} />;
 
@@ -22,6 +23,7 @@ const QuestionsPage = ({ list, questionnaire, ...props }) => {
       <h1>Paitent Health Questionnaire (PHQ-9)</h1>
     </Header>
     {!completed && <UnasweredList unanswered={unanswered} />}
+    {!completed && <PageToPDF />}
     <SubTitle className="subtitle">{questionnaire.subtitle}</SubTitle>
     <ul className="questions-list">
       {list.map(question => (
