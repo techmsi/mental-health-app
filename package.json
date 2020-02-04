@@ -21,6 +21,7 @@
     "styled-components": "*"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "*",
     "react-test-renderer": "*",
     "redux-devtools-extension": "*"
   },

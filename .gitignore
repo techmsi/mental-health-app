@@ -40,5 +40,4 @@ coverage
 .hot
 public/build/*
 lint/index.html
-package-lock.json
-yarn.lock
+build
