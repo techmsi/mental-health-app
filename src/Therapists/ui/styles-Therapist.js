@@ -23,13 +23,13 @@ export const CardList = styled.ul`
   `}
   .therapist-item {
     padding: 1rem;
-    
+
     .name:before {
       position: relative;
       counter-increment: section;
       content: counter(section);
       left: -15px;
-      font-size: .75rem;
+      font-size: 0.75rem;
       top: -5px;
     }
   }

@@ -21,9 +21,7 @@ const configureStore = (initialState = {}) => {
   store = createStore(
     rootReducer,
     initialState,
-    composeWithDevTools(
-      applyMiddleware(...middlewares)
-    )
+    composeWithDevTools(applyMiddleware(...middlewares))
   );
 
   sagaMiddleware.run(rootSaga);

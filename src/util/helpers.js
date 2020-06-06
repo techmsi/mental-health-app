@@ -49,10 +49,14 @@ export const sortByKey = (arr, key, order = 'asc') =>
 export const update = (state, mutations) => Object.assign({}, state, mutations);
 
 export const updateItem = (arr, itemId, newItem) => {
-  console.log(`UPDATE Q${itemId} in List(${arr.length} items) with `, newItem, typeof(itemId));
+  console.log(
+    `UPDATE Q${itemId} in List(${arr.length} items) with `,
+    newItem,
+    typeof itemId
+  );
 
-  const updatedArray = arr.map(item => 
-    (item.id === itemId) ? { ...item, ...newItem } : item
+  const updatedArray = arr.map(item =>
+    item.id === itemId ? { ...item, ...newItem } : item
   );
 
   // console.table(updatedArray, ['id', 'answered']);

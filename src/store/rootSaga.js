@@ -5,7 +5,7 @@ import questionsSaga from '../Questions/saga-Questions';
 import diagnosisSaga from '../Diagnosis/saga-Diagnosis';
 import scoreSaga from '../Score/saga-Score';
 
-function* rootSaga() {
+function * rootSaga () {
   yield all([
     fork(therapistsSaga),
     fork(questionsSaga),

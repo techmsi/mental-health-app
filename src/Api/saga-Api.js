@@ -3,7 +3,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { REQUEST_API_DATA, receiveApiData } from './';
 import { fetchData } from './';
 
-function* getApiDataSaga(action) {
+function * getApiDataSaga (action) {
   console.log('Sage(Fetch): ', action.url);
   try {
     const data = yield call(fetchData, action.url);
@@ -13,7 +13,7 @@ function* getApiDataSaga(action) {
   }
 }
 
-function* apiSaga() {
+function * apiSaga () {
   yield takeLatest(REQUEST_API_DATA, getApiDataSaga);
 }
 

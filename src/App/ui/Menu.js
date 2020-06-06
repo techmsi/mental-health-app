@@ -7,12 +7,12 @@ const Menu = () => (
   <Header>
     <nav>
       <DarkButton bold>
-        <NavLink exact to="/">
+        <NavLink exact to='/'>
           Home
         </NavLink>
       </DarkButton>
       <DarkButton bold>
-        <NavLink to="/therapists/list"> Therapists</NavLink>
+        <NavLink to='/therapists/list'> Therapists</NavLink>
       </DarkButton>
     </nav>
   </Header>

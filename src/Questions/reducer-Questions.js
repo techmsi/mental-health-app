@@ -10,7 +10,7 @@ const { PENDING, SUCCESS, ERROR } = GET_QUESTIONS_ASYNC;
 export const questionnaire = createReducer(
   {},
   {
-    [PENDING](state, { url }) {
+    [PENDING] (state, { url }) {
       console.debug(`LOADING -- questionnaire ${url}`);
 
       return {
@@ -18,7 +18,7 @@ export const questionnaire = createReducer(
         loading: true
       };
     },
-    [SUCCESS](state, { data }) {
+    [SUCCESS] (state, { data }) {
       console.debug(`SETTING -- questionnaire`);
 
       return {
@@ -27,7 +27,7 @@ export const questionnaire = createReducer(
         loading: false
       };
     },
-    [ERROR](state, payload) {
+    [ERROR] (state, payload) {
       console.debug(`ERROR -- questionnaire`, payload.error.message);
 
       return {
@@ -36,14 +36,16 @@ export const questionnaire = createReducer(
         error: payload.error.message
       };
     },
-    [ANSWER_QUESTION](state, { questionId }) {
+    [ANSWER_QUESTION] (state, { questionId }) {
       // Mark quesiton as being answered
       const updatedQuestions = updateItem(state.questions, questionId, {
         answered: true
       });
 
-      const completed = updatedQuestions.filter(o => o.answered).length === state.questions.length;
-      
+      const completed =
+        updatedQuestions.filter(o => o.answered).length ===
+        state.questions.length;
+
       console.log(`
         Answer Question(${questionId}). 
         All complete? ${completed}

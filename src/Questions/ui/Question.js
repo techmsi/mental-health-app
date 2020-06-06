@@ -4,8 +4,8 @@ import { findById } from 'util/helpers';
 import { QuestionShell } from 'Questions/ui/styles-Questions';
 import { ChoiceListConnect } from 'Choices/connect-Choices';
 
-export const QuestionCard = (props) => {
-  const {id, label, answered = false } = props;
+export const QuestionCard = props => {
+  const { id, label, answered = false } = props;
 
   const answeredStyle = answered ? ' answered' : '';
 
@@ -24,7 +24,12 @@ export const QuestionCard = (props) => {
   );
 };
 
-export const Question = ({match: {params: { questionId }}, questionairre: { questions: list }}) => {
+export const Question = ({
+  match: {
+    params: { questionId }
+  },
+  questionairre: { questions: list }
+}) => {
   console.debug('Question Card', list);
   return <QuestionCard {...findById(list, questionId)} />;
 };

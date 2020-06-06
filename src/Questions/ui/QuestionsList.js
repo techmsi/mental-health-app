@@ -11,28 +11,20 @@ class QuestionsList extends Component {
   state = {};
 
   componentDidMount() {
-    if(!this.props.questionnaire.hasOwnProperty('questions')) {
+    if (!this.props.questionnaire.hasOwnProperty('questions')) {
       console.log('No questions exist.');
       this.props.requestApiData(API_ENDPOINT);
     }
   }
 
   render() {
-    const {
-      loading,
-      error,
-      questions: list = []
-    } = this.props.questionnaire;
-    
+    const { loading, error, questions: list = [] } = this.props.questionnaire;
+
     console.info('QuestionsList Page', list.length);
 
     return (
       <div>
-        {loading ? (
-          <Spinner />
-        ) : (
-        <QuestionsPage list={list} {...this.props} />
-        )}
+        {loading ? <Spinner /> : <QuestionsPage list={list} {...this.props} />}
         {error && <ErrorMessage>{error}</ErrorMessage>}
       </div>
     );

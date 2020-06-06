@@ -11,7 +11,7 @@ describe('<App />', () => {
   });
 
   it('renders a snapshot of <App />', () => {
-    const tree = renderer.create(<App/>).toJSON();
+    const tree = renderer.create(<App />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

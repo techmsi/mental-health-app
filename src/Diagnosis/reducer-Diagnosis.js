@@ -8,7 +8,7 @@ const { PENDING, SUCCESS, ERROR } = GET_DIAGNOSIS_ASYNC;
 export const diagnosis = createReducer(
   {},
   {
-    [PENDING](state, { url }) {
+    [PENDING] (state, { url }) {
       console.debug(`LOADING -- diagnosis ${url}`);
 
       return {
@@ -16,7 +16,7 @@ export const diagnosis = createReducer(
         loading: true
       };
     },
-    [SUCCESS](state, { diagnosis = [] }) {
+    [SUCCESS] (state, { diagnosis = [] }) {
       console.debug(`SETTING -- diagnosis`, diagnosis);
 
       return {
@@ -25,7 +25,7 @@ export const diagnosis = createReducer(
         loading: false
       };
     },
-    [ERROR](state, payload) {
+    [ERROR] (state, payload) {
       console.debug(`ERROR -- diagnosis`, payload.error.message);
 
       return {

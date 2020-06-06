@@ -8,18 +8,18 @@ import TherapistsPage from './TherapistsPage';
 
 const API_ENDPOINT = `http://localhost:3001/api/therapists`;
 
-const routeSubpath = ({pathname}) => {
-  const [,, subPath = null] = pathname.split('/');
+const routeSubpath = ({ pathname }) => {
+  const [, , subPath = null] = pathname.split('/');
   return subPath;
-}
+};
 
 class TherapistList extends Component {
-  state = { sortBy: ''};
+  state = { sortBy: '' };
 
   componentDidMount() {
     const isFullList = routeSubpath(this.props.location);
-    
-    if(isFullList) this.props.requestApiData(API_ENDPOINT);
+
+    if (isFullList) this.props.requestApiData(API_ENDPOINT);
     else this.props.requestApiData(API_ENDPOINT, 3);
   }
 
@@ -31,7 +31,7 @@ class TherapistList extends Component {
   };
 
   render() {
-    const {sortBy} = this.state;
+    const { sortBy } = this.state;
     const { loading, error, list = [] } = this.props.therapists;
 
     console.info('TherapistList Page', list.length);

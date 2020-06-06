@@ -7,15 +7,17 @@ const { PENDING, SUCCESS, ERROR } = GET_THERAPISTS_ASYNC;
 export const therapists = createReducer(
   {},
   {
-    [PENDING](state, { url, limit }) {
-      console.debug(`LOADING -- therapists ${url} ${limit ? `, limit: ${limit}`: ''}`);
+    [PENDING] (state, { url, limit }) {
+      console.debug(
+        `LOADING -- therapists ${url} ${limit ? `, limit: ${limit}` : ''}`
+      );
 
       return {
         ...state,
         loading: true
       };
     },
-    [SUCCESS](state, { therapists = [] }) {
+    [SUCCESS] (state, { therapists = [] }) {
       console.debug(`SETTING -- therapists`, therapists);
 
       return {
@@ -24,7 +26,7 @@ export const therapists = createReducer(
         loading: false
       };
     },
-    [ERROR](state, payload) {
+    [ERROR] (state, payload) {
       console.debug(`ERROR -- therapists`, payload.error.message);
 
       return {

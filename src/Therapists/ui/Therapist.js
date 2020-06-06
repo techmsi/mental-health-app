@@ -1,13 +1,13 @@
 // Component: Therapist Detail
-import React from "react";
+import React from 'react';
 
-import { findById } from "util/helpers";
-import { CardShell, ThankYouShell } from "./styles-Therapist";
+import { findById } from 'util/helpers';
+import { CardShell, ThankYouShell } from './styles-Therapist';
 
 export const TherapistCardImage = ({
   image,
   name,
-  baseUrl = "https://github.com/techmsi/mental-health-app/blob/master/public/"
+  baseUrl = 'https://github.com/techmsi/mental-health-app/blob/master/public/'
 }) =>
   image ? (
     <img
@@ -23,16 +23,16 @@ export const TherapistChosen = ({
   therapists: { list },
   showImage
 }) => {
-  console.debug("Therapist Chosen", list);
+  console.debug('Therapist Chosen', list);
 
   const therapistDetail = findById(list, therapistId);
   const { image, name } = therapistDetail;
 
   return (
-    <ThankYouShell className="therapists__thanks">
+    <ThankYouShell className='therapists__thanks'>
       Thank you for choosing a therapist.
       <TherapistCardImage image={image} name={name} />
-      <span className="name">{name}</span> will be contacted on your behalf.
+      <span className='name'>{name}</span> will be contacted on your behalf.
     </ThankYouShell>
   );
 };
@@ -44,14 +44,15 @@ export const TherapistCard = ({
   name,
   email,
   image
-}) => id ? (
-  <CardShell id={`therapist-link-${id}`} className="therapist">
-    <h4 className="name">{name}, MD</h4>
-    <div className="specialty">{specialty}</div>
-    {showImage && <TherapistCardImage image={image} />}
-    <div className="email">{email}</div>
-  </CardShell>
-) : null;
+}) =>
+  id ? (
+    <CardShell id={`therapist-link-${id}`} className='therapist'>
+      <h4 className='name'>{name}, MD</h4>
+      <div className='specialty'>{specialty}</div>
+      {showImage && <TherapistCardImage image={image} />}
+      <div className='email'>{email}</div>
+    </CardShell>
+  ) : null;
 
 export const Therapist = ({
   match: {
@@ -59,7 +60,7 @@ export const Therapist = ({
   },
   therapists: { list }
 }) => {
-  console.debug("Therapist Card", list);
+  console.debug('Therapist Card', list);
   return <TherapistCard {...findById(list, therapistId)} />;
 };
 
