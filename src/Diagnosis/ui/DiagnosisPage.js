@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import TherapistRoutes from "Therapists/ui/routes-Therapist";
+import TherapistRoutes from 'Therapists/ui/routes-Therapist';
 import {
   ScoreShell,
   Header,
@@ -8,7 +8,7 @@ import {
   Ranges,
   PullQuote,
   SeverityText
-} from "Diagnosis/ui/styles-Diagnosis";
+} from 'Diagnosis/ui/styles-Diagnosis';
 
 const API_ENDPOINT = `http://localhost:3001/api/diagnosis`;
 
@@ -56,12 +56,12 @@ class DiagnosisPage extends Component {
   state = {};
 
   componentDidMount() {
-    console.log("Score so far: ", this.props.score);
+    console.log('Score so far: ', this.props.score);
     this.props.requestApiData(API_ENDPOINT, this.props.score);
   }
 
   depressed = ({ severity }) =>
-    ["moderate", "moderately severe", "severe"].indexOf(severity) !== -1;
+    ['moderate', 'moderately severe', 'severe'].indexOf(severity) !== -1;
 
   render() {
     const { diagnosis } = this.props;

@@ -6,7 +6,7 @@ export const WelcomeShell = styled.section`
   display: flex;
   flex-direction: column;
   text-align: center;
-  
+
   .begin {
     ${media.phone`
      align-self: center;

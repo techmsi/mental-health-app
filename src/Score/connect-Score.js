@@ -4,14 +4,15 @@ import { bindActionCreators } from 'redux';
 import { scoreActions } from 'Score/actions-Score';
 import UiScoreBox from 'Score/ui/ScoreBox';
 
-const mapDispatchToProps = dispatch => bindActionCreators(
-  {
-    updateScore: scoreActions.updateScore
-  },
-  dispatch
-);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      updateScore: scoreActions.updateScore
+    },
+    dispatch
+  );
 
-const mapStateToProps = ({score}) => ({
+const mapStateToProps = ({ score }) => ({
   score
 });
 

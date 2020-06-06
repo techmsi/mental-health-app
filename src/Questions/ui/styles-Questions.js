@@ -8,28 +8,28 @@ const FlexCol = styled.div`
 `;
 
 export const QuestionShell = styled(FlexCol)`
-margin: 0.25rem;
-.label {
-  font-size: 1.6rem;
-  padding: .5rem;
-  line-height: 2rem;
-}
-.choices > * {
-  line-height: 2.2rem;
-  ${media.phone`line-height: 2.5rem;`}
-}
-span {
-  padding-right: 1rem;
-}
+  margin: 0.25rem;
+  .label {
+    font-size: 1.6rem;
+    padding: 0.5rem;
+    line-height: 2rem;
+  }
+  .choices > * {
+    line-height: 2.2rem;
+    ${media.phone`line-height: 2.5rem;`}
+  }
+  span {
+    padding-right: 1rem;
+  }
 
-footer {
-  background-color: #333;
-  border-radius: .25rem;
-  color: #fff;
-  font-size: .95rem;
-  font-weight: normal;
-  margin-top: 1rem;
-  padding: .5rem 1rem;
+  footer {
+    background-color: #333;
+    border-radius: 0.25rem;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: normal;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
   }
 
   footer span {
@@ -37,7 +37,7 @@ footer {
     position: relative;
   }
 
-  footer .number{
+  footer .number {
     float: right;
     &::before {
       content: '#';

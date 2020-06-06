@@ -1,7 +1,10 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { fetchData } from 'Api/';
-import { GET_QUESTIONS_ASYNC, questionsActions } from 'Questions/actions-Questions';
+import {
+  GET_QUESTIONS_ASYNC,
+  questionsActions
+} from 'Questions/actions-Questions';
 
 const { success, error } = questionsActions;
 const { PENDING } = GET_QUESTIONS_ASYNC;

@@ -5,14 +5,17 @@ import { answerQuestion } from 'Choices/actions-Choices';
 
 import UiChoiceList from 'Choices/ui/ChoiceList';
 
-const mapDispatchToProps = dispatch => bindActionCreators(
-  {
-  answerQuestion},
-  dispatch
-);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      answerQuestion
+    },
+    dispatch
+  );
 
-const mapStateToProps = ({questionnaire: { choices }}) => ({
-choices});
+const mapStateToProps = ({ questionnaire: { choices } }) => ({
+  choices
+});
 
 // Connect to redux
 export const ChoiceListConnect = connect(

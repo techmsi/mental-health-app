@@ -1,10 +1,13 @@
 // Reducer: Score
-import { createReducer } from "util/redux-helpers";
+import { createReducer } from 'util/redux-helpers';
 
-import { ANSWER_QUESTION, ANSWER_QUESTION_ERROR } from "Choices/actions-Choices";
+import {
+  ANSWER_QUESTION,
+  ANSWER_QUESTION_ERROR
+} from 'Choices/actions-Choices';
 
 export const score = createReducer(0, {
-  [ANSWER_QUESTION](state, { points }) {
+  [ANSWER_QUESTION] (state, { points }) {
     const score = state + points;
 
     console.debug(
@@ -14,7 +17,7 @@ export const score = createReducer(0, {
 
     return score;
   },
-  [ANSWER_QUESTION_ERROR](state, payload) {
+  [ANSWER_QUESTION_ERROR] (state, payload) {
     console.debug(`ERROR -- score`, payload.error.message);
 
     return {

@@ -43,13 +43,13 @@ export const Ranges = styled.span`
   }
 
   &::before {
-    content: "Ranging between";
+    content: 'Ranging between';
     font-size: 1.2rem;
     padding-right: 1rem;
   }
 
   em:first-child::after {
-    content: "-";
+    content: '-';
     padding: 0 0.5rem;
   }
 `;
@@ -69,11 +69,11 @@ export const ScoreShell = styled(Flex)`
 `;
 
 const _SEVERITY = {
-  none: "#555",
-  mild: "#c7a20e",
-  moderate: "#d40c0c",
-  "moderately severe": "#da2020",
-  severe: "#f00"
+  none: '#555',
+  mild: '#c7a20e',
+  moderate: '#d40c0c',
+  'moderately severe': '#da2020',
+  severe: '#f00'
 };
 
 export const SeverityText = styled.p`
@@ -82,7 +82,7 @@ export const SeverityText = styled.p`
   margin: 1rem;
   padding: 1rem;
 
-  color: ${({ severity = _SEVERITY["none"] }) => _SEVERITY[severity]};
+  color: ${({ severity = _SEVERITY['none'] }) => _SEVERITY[severity]};
 `;
 
 export const PullQuote = styled.blockquote`
