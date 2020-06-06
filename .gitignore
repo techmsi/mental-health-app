@@ -41,3 +41,4 @@ coverage
 public/build/*
 lint/index.html
 build
+.env*

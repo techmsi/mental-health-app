@@ -22,10 +22,12 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "*",
+    "prettier-semistandard": "*",
     "react-test-renderer": "*",
     "redux-devtools-extension": "*"
   },
   "scripts": {
+    "format": "prettier-semistandard src/*",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -36,5 +38,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "none"
+  }
 }
