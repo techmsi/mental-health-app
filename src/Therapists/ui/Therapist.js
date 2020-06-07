@@ -58,10 +58,10 @@ export const Therapist = ({
   match: {
     params: { therapistId }
   },
-  therapists: { list }
+  therapists
 }) => {
-  console.debug('Therapist Card', list);
-  return <TherapistCard {...findById(list, therapistId)} />;
+  console.debug('Therapist Card', therapists);
+  return <TherapistCard {...findById(therapists.list, therapistId)} />;
 };
 
 export default Therapist;

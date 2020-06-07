@@ -5,7 +5,7 @@ import { ErrorMessage } from 'styles/Layout';
 import QuestionsPage from 'Questions/ui/QuestionsPage';
 import Spinner from 'Spinner/';
 
-const API_ENDPOINT = `http://localhost:3001/api/phq9`;
+import { API_ENDPOINT } from 'Api/api-config';
 
 class QuestionsList extends Component {
   state = {};
@@ -13,7 +13,7 @@ class QuestionsList extends Component {
   componentDidMount() {
     if (!this.props.questionnaire.hasOwnProperty('questions')) {
       console.log('No questions exist.');
-      this.props.requestApiData(API_ENDPOINT);
+      this.props.requestApiData(API_ENDPOINT.phq9);
     }
   }
 

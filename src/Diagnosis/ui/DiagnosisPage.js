@@ -10,8 +10,7 @@ import {
   SeverityText
 } from 'Diagnosis/ui/styles-Diagnosis';
 
-const API_ENDPOINT = `http://localhost:3001/api/diagnosis`;
-
+import { API_ENDPOINT } from 'Api/api-config';
 const ScoreRange = ({ min = 0, max = 27 }) => (
   <Ranges className="ranges">
     <em> {min} </em>
@@ -57,7 +56,7 @@ class DiagnosisPage extends Component {
 
   componentDidMount() {
     console.log('Score so far: ', this.props.score);
-    this.props.requestApiData(API_ENDPOINT, this.props.score);
+    this.props.requestApiData(API_ENDPOINT.diagnosis, this.props.score);
   }
 
   depressed = ({ severity }) =>
