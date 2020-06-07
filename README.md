@@ -2,24 +2,20 @@
 
 Prototype for mental health web-app using Patient Health Questionnaire (PHQ-9)
 
+### Disclaimer
+
+>This tool does not provide medical advice, and is for informational and educational purposes only, and is not a substitute for professional medical advice, treatment or diagnosis. Call your doctor to receive medical advice. If you think you may have a medical emergency, please dial your local emergency response phone number.
+
 ## User Story
 
 As a patient, I would like to take the PHQ-9 depression screener and get the assessment score along with its explanation. If I score _moderate_ depression or higher, I would like to be presented with 3 options for therapists that I can choose. Then I will select one and receive a thank you message.
+
 
 ## Prerequisites
 
 - node must be installed
 
-## Run server in one tab
-
-```
-cd mental-health-app/server
-yarn
-yarn start
-
-```
-
-## Run app in a different tab
+## Run app locally
 
 ```
 cd mental-health-app
@@ -32,23 +28,6 @@ Go to http://localhost:3001
 
 - click on Questionnaire
 
-### Endpoints
-
-- `/api/phq9`
-
-  - GETS PHQ-9 questionnaire
-
-- `/api/diagnosis`
-
-  - POSTS PHQ-9 score to receive diagnosis
-
-- `/api/therapists`
-
-  - GETS a list of therapists
-
-- `/api/therapists?limit=5` default is `3`
-  - GETS an `n` number of therapists
-
 ### Technologies
 
 - Side Effects Management: redux-saga
@@ -57,7 +36,7 @@ Go to http://localhost:3001
 - Front-end: react
 - Styling: styled-components
 - Transpiler & Bundler: webpack + babel
-- Backend: node + express
+- Backend: serverless function (see mental-health-api)
 
 ### Screenshots
 
