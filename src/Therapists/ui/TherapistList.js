@@ -6,7 +6,7 @@ import Spinner from '../../Spinner/';
 import { ErrorMessage } from 'styles/Layout';
 import TherapistsPage from './TherapistsPage';
 
-const API_ENDPOINT = `http://localhost:3001/api/therapists`;
+import { API_ENDPOINT } from 'Api/api-config';
 
 const routeSubpath = ({ pathname }) => {
   const [, , subPath = null] = pathname.split('/');
@@ -19,8 +19,11 @@ class TherapistList extends Component {
   componentDidMount() {
     const isFullList = routeSubpath(this.props.location);
 
-    if (isFullList) this.props.requestApiData(API_ENDPOINT);
-    else this.props.requestApiData(API_ENDPOINT, 3);
+    if (isFullList) {
+      this.props.requestApiData(API_ENDPOINT.therapists);
+    } else {
+      this.props.requestApiData(API_ENDPOINT.therapists, 3);
+    }
   }
 
   sort = field => {
