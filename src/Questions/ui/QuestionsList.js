@@ -11,10 +11,17 @@ class QuestionsList extends Component {
   state = {};
 
   componentDidMount() {
-    if (!this.props.questionnaire.hasOwnProperty('questions')) {
-      console.log('No questions exist.');
-      this.props.requestApiData(API_ENDPOINT.phq9);
+    const { questions } = this.props.questionnaire;
+    const isLoaded = questions && questions.length > 0;
+
+    if (!isLoaded) {
+      this.loadList();
     }
+  }
+
+  loadList() {
+    console.log('No questions exist. Getting the list.');
+    this.props.requestApiData(API_ENDPOINT.phq9);
   }
 
   render() {

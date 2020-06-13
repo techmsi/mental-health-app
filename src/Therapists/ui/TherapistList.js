@@ -17,6 +17,15 @@ class TherapistList extends Component {
   state = { sortBy: '' };
 
   componentDidMount() {
+    const { list } = this.props.therapists;
+    const isLoaded = list && list.length > 0;
+
+    if (!isLoaded) {
+      this.loadList();
+    }
+  }
+
+  loadList() {
     const isFullList = routeSubpath(this.props.location);
 
     if (isFullList) {
