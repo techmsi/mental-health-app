@@ -1,0 +1,25 @@
+{
+  "short_name": "Mental Health App",
+  "name": "Mental Health App - Paitent Health Questionnaire (PHQ-9)",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffcc000",
+  "background_color": "#ffffff"
+}
