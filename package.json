@@ -22,11 +22,13 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "*",
+    "lighthouse": "*",
     "prettier-semistandard": "*",
     "react-test-renderer": "*",
     "redux-devtools-extension": "*"
   },
   "scripts": {
+    "perf:dev": "node perf/runAudit",
     "format": "prettier-semistandard src/*",
     "start": "react-scripts start",
     "build": "react-scripts build",
