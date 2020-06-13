@@ -46,7 +46,7 @@ export const questionnaire = createReducer(
         updatedQuestions.filter(o => o.answered).length ===
         state.questions.length;
 
-      console.log(`
+      console.debug(`
         Answer Question(${questionId}). 
         All complete? ${completed}
       `);

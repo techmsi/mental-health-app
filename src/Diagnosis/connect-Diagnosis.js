@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { diagnosisActions } from 'Diagnosis/actions-Diagnosis';
-import UiDiagnosisPage from 'Diagnosis/ui/DiagnosisPage';
+import { DiagnosisPage } from 'Diagnosis/ui/dynamicRoutes';
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -26,4 +26,4 @@ const mapStateToProps = ({
 export const DiagnosisConnect = connect(
   mapStateToProps,
   mapDispatchToProps
-)(UiDiagnosisPage);
+)(DiagnosisPage);

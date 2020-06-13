@@ -1,20 +1,15 @@
 import React, { memo } from 'react';
-import { NavLink } from 'react-router-dom';
 
-import { Header, DarkButton } from 'styles/Layout';
+import { Header, DarkButtonLink, MainNavShell } from 'styles/Layout';
 
 const Menu = () => (
   <Header>
-    <nav>
-      <DarkButton bold>
-        <NavLink exact to='/'>
-          Home
-        </NavLink>
-      </DarkButton>
-      <DarkButton bold>
-        <NavLink to='/therapists/list'> Therapists</NavLink>
-      </DarkButton>
-    </nav>
+    <MainNavShell>
+      <DarkButtonLink exact to='/'>
+        Home
+      </DarkButtonLink>
+      <DarkButtonLink to='/therapists/list'> Therapists</DarkButtonLink>
+    </MainNavShell>
   </Header>
 );
 

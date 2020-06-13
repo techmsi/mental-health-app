@@ -1,32 +1,39 @@
 // Component: Questions
 import React, { Component } from 'react';
 
-import { ErrorMessage } from 'styles/Layout';
-import QuestionsPage from 'Questions/ui/QuestionsPage';
-import Spinner from 'Spinner/';
-
 import { API_ENDPOINT } from 'Api/api-config';
+import { ErrorMessage } from 'styles/Layout';
+
+import { Spinner } from 'App/ui/dynamicRoutes';
+import { QuestionsPage } from 'Questions/ui/dynamicRoutes';
 
 class QuestionsList extends Component {
   state = {};
 
   componentDidMount() {
-    if (!this.props.questionnaire.hasOwnProperty('questions')) {
-      console.log('No questions exist.');
-      this.props.requestApiData(API_ENDPOINT.phq9);
+    const { questions } = this.props.questionnaire;
+    const isLoaded = questions && questions.length > 0;
+
+    if (!isLoaded) {
+      this.loadList();
     }
+  }
+
+  loadList() {
+    console.debug('No questions exist. Getting the list.');
+    this.props.requestApiData(API_ENDPOINT.phq9);
   }
 
   render() {
     const { loading, error, questions: list = [] } = this.props.questionnaire;
 
-    console.info('QuestionsList Page', list.length);
+    console.debug('QuestionsList Page', list.length);
 
     return (
-      <div>
+      <>
         {loading ? <Spinner /> : <QuestionsPage list={list} {...this.props} />}
         {error && <ErrorMessage>{error}</ErrorMessage>}
-      </div>
+      </>
     );
   }
 }

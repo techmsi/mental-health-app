@@ -2,11 +2,11 @@
 import React, { Component } from 'react';
 import { sortByKey } from 'util/helpers';
 
-import Spinner from '../../Spinner/';
 import { ErrorMessage } from 'styles/Layout';
-import TherapistsPage from './TherapistsPage';
+import { TherapistsPage } from 'Therapists/ui/dynamicRoutes';
 
 import { API_ENDPOINT } from 'Api/api-config';
+import { Spinner } from 'App/ui/dynamicRoutes';
 
 const routeSubpath = ({ pathname }) => {
   const [, , subPath = null] = pathname.split('/');
@@ -14,9 +14,16 @@ const routeSubpath = ({ pathname }) => {
 };
 
 class TherapistList extends Component {
-  state = { sortBy: '' };
-
   componentDidMount() {
+    const { list } = this.props.therapists;
+    const isLoaded = list && list.length > 0;
+
+    if (!isLoaded) {
+      this.loadList();
+    }
+  }
+
+  loadList() {
     const isFullList = routeSubpath(this.props.location);
 
     if (isFullList) {
@@ -27,27 +34,26 @@ class TherapistList extends Component {
   }
 
   sort = field => {
-    console.log('Sort by', field);
+    console.debug('Sort by', field);
     const { list } = this.props.therapists;
 
-    this.setState({ list: sortByKey(list, field), sortBy: field });
+    this.setState({ list: sortByKey(list, field) });
   };
 
   render() {
-    const { sortBy } = this.state;
     const { loading, error, list = [] } = this.props.therapists;
 
-    console.info('TherapistList Page', list.length);
+    console.debug('TherapistList Page', list.length);
 
     return (
-      <div>
+      <>
         {loading ? (
           <Spinner />
         ) : (
-          <TherapistsPage list={list} onSort={this.sort} by={sortBy} />
+          <TherapistsPage list={list} onSort={this.sort} />
         )}
         {error && <ErrorMessage>{error}</ErrorMessage>}
-      </div>
+      </>
     );
   }
 }

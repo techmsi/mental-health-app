@@ -1,39 +1,23 @@
+import 'preact/debug';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render, hydrate } from 'react-dom';
 
-import { Provider } from 'react-redux';
-import configureStore from 'store/';
-import { loadState, saveState } from 'store/persistState';
-import throttle from 'lodash/throttle';
+import 'worker/fontLoad/host';
+import 'worker/imageLoad/host';
+import * as serviceWorker from 'worker/serviceWorker';
+import { Application } from 'App/ui/Application';
 
-import App from 'App/ui/App';
-
-import 'styles/reset.css';
-import 'styles/styles.css';
-
-const persistedState = loadState();
-const store = configureStore(persistedState);
-store.subscribe(
-  throttle(() => {
-    const { therapists, questionnaire } = store.getState();
-    saveState({
-      therapists,
-      questionnaire
-    });
-  }, 1000)
-);
-
-const Application = () => {
-  console.log('store ', store.getState());
-
-  return (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
-};
-
+const debugOff = process.env.NODE_ENV === 'production';
+if (debugOff) {
+  console.debug(process.env.NODE_ENV);
+  console.debug = () => {};
+}
 const rootElement = document.getElementById('root');
-ReactDOM.render(<Application />, rootElement);
 
-export default Application;
+if (rootElement.hasChildNodes()) {
+  hydrate(<Application />, rootElement);
+} else {
+  render(<Application />, rootElement);
+}
+
+serviceWorker.register();

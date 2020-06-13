@@ -1,88 +1,182 @@
 import styled from 'styled-components';
 import { media } from 'styles/Responsive';
+import { midgray, light } from 'styles/theme';
+export const placeHolder =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
 
-const FlexCol = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const CardWrapper = styled(FlexCol)`
-  background-color: #f7f4e5;
-  padding: 1rem;
-`;
+const simpleGrid = (minItemSize = 18, gap = 1) => `
+  display: grid;
+  column-gap: ${gap}rem;
+  row-gap: ${gap}rem;
+  grid-template-columns: repeat(auto-fill, minmax(${minItemSize}rem, 1fr));
+  `;
 
 export const CardList = styled.ul`
   counter-reset: section;
-  ${media.desktop`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    > * {
-      flex-basis: 50%;
-    }
-  `}
+  ${simpleGrid(18, 1)}
+  ${media.tablet`${simpleGrid(32, 4)}`}
+  ${media.desktop`${simpleGrid(28, 3)}`}
   .therapist-item {
-    padding: 1rem;
-
     .name:before {
-      position: relative;
+      display: inline-block;
       counter-increment: section;
       content: counter(section);
-      left: -15px;
-      font-size: 0.75rem;
-      top: -5px;
+      font-size: 0.95rem;
+      height: 1.5rem;
+      left: -1.5rem;
+      line-height: 2.5rem;
+      position: absolute;
+      width: 1rem;
     }
   }
 `;
 
-export const CardShell = styled(FlexCol)`
-  font-size: 1.2rem;
-  line-height: 2rem;
+const CardShell = styled.li`
+  padding: 1rem;
+  ${media.tablet`height: 22rem;`}
+  ${media.desktop`height: 22rem;`}
+`;
 
-  img {
-    margin-top: 2rem;
-    width: 10rem;
+const squareImage = `
+    object-fit: cover;
+    width: 15rem;
+    height: 14rem;
+    background-position:center;
+    border-radius: 0.4rem;
+    border: 1px solid ${midgray};
+    min-width: 10rem;
+    min-height: 10rem;
+`;
+
+const squareImageMobile = `
+  object-fit: cover;
+  height: 27rem;
+  max-width: 35rem;
+  width: 100%;
+`;
+
+export const CardImage = styled.picture`
+  @keyframes loaded {
+    0% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+ img {
+    ${media.phone`${squareImageMobile}`}
+    ${media.tablet`${squareImage}`}
+    ${media.desktop`${squareImage}`}
+    
+    &.loaded {
+      animation: loaded 300ms ease-in-out;
+    }
+   }
+`;
+
+const gridAreas = `
+  .headshot {
+    grid-area: headshot;
+    place-self: center;
+  }
+  .cityState {
+     grid-area: cityState;
+  }
+  .therapist__menu {
+    grid-area: menu;
+    place-items:center;
+  }
+  .header {
+      grid-area: header;
   }
   .name {
-    font-size: 1.4rem;
-    font-weight: bold;
+    grid-area: fullName;
+    position: relative;
   }
-
+  .bio {
+    grid-area: bio;
+  }
   .email {
-    cursor: pointer;
-    font-size: 1rem;
+    grid-area: email;
   }
   .specialty {
-    font-style: italic;
-    color: #555;
+    grid-area: specialty;
+  }
+  `;
+
+const listingGridAreas = `
+ grid-template-areas:
+    'menu  cityState'
+    'headshot fullName'
+    'headshot specialty'
+    'headshot email';
+`;
+
+const CardGrid = styled(CardShell)`
+  display: grid;
+  overflow: hidden;
+  ${media.tablet`${gridAreas} ${listingGridAreas}column-gap:3rem;grid-template-columns: 0.25fr 1fr;  grid-template-rows: repeat(auto-fill, .5fr);`}
+  ${media.desktop`${gridAreas} ${listingGridAreas} column-gap:1rem; grid-template-columns: repeat(2, 1fr);`}
+`;
+
+export const TherapistCardGrid = styled(CardGrid)`
+  .cityState,
+  .name {
+    align-self: end;
+  }
+  .cityState {
+    text-transform: uppercase;
+  }
+  .email {
+    cursor: pointer;
   }
   .specialty:before {
     content: 'Specialty: ';
-    padding-right: 0.5rem;
+    height: 2rem;
+    width: 6rem;
+    display: inline-block;
+  }
+  .name {
+    font-weight: 700;
   }
 `;
 
-export const ThankYouShell = styled.p`
-  position: relative;
-  border: 1px solid #555;
-  box-shadow: 1px 1px 5px #333;
-  border-radius: 0.25rem;
+const imageFloatRight = `
+float:right; height: 40rem; width: 30rem;  margin: 3rem;
+`;
+export const DetailGrid = styled.section`
   padding: 1rem;
-  line-height: 2rem;
-  display: flex;
-  align-items: center;
-  align-self: center;
-  flex-direction: column;
+
+  .header,
+  .email {
+    border-bottom: 5px solid ${light};
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .email {
+    ${media.phone`border-width:0`}
+  }
+  .bio > * {
+      padding-bottom: 1rem;
+    }
 
   img {
-    margin-top: 1rem;
-    width: 10rem;
-    border: 3px solid #333;
+    ${media.desktop`${imageFloatRight}`}
+    ${media.tablet`${imageFloatRight}`}
+    
+    border: 10px solid ${light};
   }
+`;
 
-  .name {
-    font-size: 1.4rem;
-    font-weight: bold;
-    @extend .underline-button;
+export const ThankYouShell = styled(DetailGrid)`
+  display: grid;
+  place-items: center;
+  p {
+    padding-bottom: 1rem;
+  }
+  img {
+    border-color: #333;
+    box-shadow: 1px 1px 5px #333;
   }
 `;

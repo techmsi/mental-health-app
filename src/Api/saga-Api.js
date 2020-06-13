@@ -4,12 +4,12 @@ import { REQUEST_API_DATA, receiveApiData } from './';
 import { fetchData } from './';
 
 function * getApiDataSaga (action) {
-  console.log('Sage(Fetch): ', action.url);
+  console.debug('Sage(Fetch): ', action.url);
   try {
     const data = yield call(fetchData, action.url);
     yield put(receiveApiData(data));
   } catch (e) {
-    yield put(console.log(e.message));
+    yield put(console.debug(e.message));
   }
 }
 

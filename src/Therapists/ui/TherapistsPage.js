@@ -1,62 +1,22 @@
 // Component: TherapistsPage
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import { Header, LightButton, OutlineButton } from 'styles/Layout';
-import { CardShell, CardList } from './styles-Therapist';
+import { Header, Heading } from 'styles/Layout';
+import { CardList } from 'Therapists/ui/styles-Therapist';
 
-import { TherapistCard } from './Therapist';
+import { TherapistListCard } from 'Therapists/ui/TherapistListCard';
+import { TherapistSortControls } from 'Therapists/ui/dynamicRoutes';
 
-const TherapistListCard = therapist => (
-  <CardShell>
-    <Header>
-      <LightButton>
-        <Link to={`/therapists/${therapist.id}/`} className='read-more'>
-          See Details
-        </Link>
-      </LightButton>
-      <LightButton>
-        <Link to={`/therapists/${therapist.id}/contacted`} className='contact'>
-          Contact
-        </Link>
-      </LightButton>
-    </Header>
-    <TherapistCard {...therapist} showImage={false} />
-  </CardShell>
-);
-
-const SortControls = ({ onSort, by }) => (
-  <nav className='sort'>
-    <div>
-      <OutlineButton active={by === 'name'} onClick={() => onSort('name')}>
-        Sort by Name
-      </OutlineButton>
-      <OutlineButton
-        active={by === 'specialty'}
-        onClick={() => onSort('specialty')}
-      >
-        Sort by Specialty
-      </OutlineButton>
-    </div>
-  </nav>
-);
-
-const TherapistsPage = ({ list, onSort, by }) => {
+const TherapistsPage = ({ list, onSort }) => {
   return (
     <section className='therapists'>
       <Header>
-        <SortControls onSort={onSort} by={by} />
-        <h3>
-          Please choose a <b>Therapist</b> from the list below:
-        </h3>
+        <Heading as='h1'>Certified Therapists</Heading>
+        <TherapistSortControls onSort={onSort} />
+        <Heading>Book Your Appointment</Heading>
       </Header>
       <CardList className='therapists-list'>
-        {list &&
-          list.map((therapist, i) => (
-            <li key={therapist.id} className='therapist-item'>
-              <TherapistListCard {...therapist} />
-            </li>
-          ))}
+        {list && list.map(TherapistListCard)}
       </CardList>
     </section>
   );

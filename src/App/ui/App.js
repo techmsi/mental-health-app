@@ -1,19 +1,14 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { Page } from 'styles/Layout';
-import Menu from 'App/ui/Menu';
-import AppRoutes from 'App/ui/routes-App';
-
+import { AppRoutes, Menu } from 'App/ui/dynamicRoutes';
 const App = () => (
-  <Page className='app'>
+  <>
     <BrowserRouter>
-      <main>
-        <Menu />
-        <AppRoutes />
-      </main>
+      <Menu />
+      <AppRoutes />
     </BrowserRouter>
-  </Page>
+  </>
 );
 
 export default App;

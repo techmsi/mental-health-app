@@ -1,61 +1,14 @@
 import React, { Component } from 'react';
 
-import TherapistRoutes from 'Therapists/ui/routes-Therapist';
-import {
-  ScoreShell,
-  Header,
-  Details,
-  Ranges,
-  PullQuote,
-  SeverityText
-} from 'Diagnosis/ui/styles-Diagnosis';
-
 import { API_ENDPOINT } from 'Api/api-config';
-const ScoreRange = ({ min = 0, max = 27 }) => (
-  <Ranges className="ranges">
-    <em> {min} </em>
-    <em> {max} </em>
-  </Ranges>
-);
+import { ScoreShell } from 'Diagnosis/ui/styles-Diagnosis';
 
-const ScoreTotal = ({ score, outOfScore }) => (
-  <span className="total">
-    <em> {score || 0} </em> out of
-    <em> {outOfScore || 0} </em>
-  </span>
-);
-
-const ScoreExplanation = () => (
-  <PullQuote>
-    <p>
-      Depression is a mood disorder that causes a persistent feeling of sadness
-      and loss of interest.
-    </p>
-    <cite>Mayo Clinic</cite>
-  </PullQuote>
-);
-
-const ScoreHeader = ({ diagnosis: { severity }, explanation }) => (
-  <Header className="header">
-    <h3>Diagnoses of Depression Severity</h3>
-    <ScoreExplanation />
-    {severity && <SeverityText severity={severity}>{severity}</SeverityText>}
-  </Header>
-);
-
-const ScoreDetails = ({ diagnosis, ...props }) => (
-  <Details className="details">
-    <span>Score</span>
-    <ScoreTotal {...props} />
-    <ScoreRange {...diagnosis.range} />
-  </Details>
-);
+import { TherapistRoutes } from 'App/ui/dynamicRoutes';
+import { ScoreHeader, ScoreDetails } from 'Diagnosis/ui/dynamicRoutes';
 
 class DiagnosisPage extends Component {
-  state = {};
-
   componentDidMount() {
-    console.log('Score so far: ', this.props.score);
+    console.debug('Score so far: ', this.props.score);
     this.props.requestApiData(API_ENDPOINT.diagnosis, this.props.score);
   }
 

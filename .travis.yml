@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - stable
+addons:
+  chrome: stable
+git:
+  lfs_skip_smudge: true
+before_install:
+  - npm install -g @lhci/cli
+script:
+  - npm run build
+after_success:
+  - lhci autorun

@@ -1,6 +1,6 @@
 # mental-health-app
 
-Prototype for mental health web-app using Patient Health Questionnaire (PHQ-9)
+Prototype for mental health web-app using Patient Health Questionnaire (PHQ-9).
 
 ### Disclaimer
 
@@ -49,3 +49,33 @@ Go to http://localhost:3001
 ![Therapists List](/screenshots/screen_therapists.png?raw=true 'Final Score & Results')
 
 ![Final](/screenshots/screen_scorebox.png?raw=true 'Final Score & Results')
+
+### Optimizations
+
+#### Basic PWA support
+* allows for offline use
+
+### Lazy load routes
+* router no longer loads all the routes even if they are not in view.
+
+#### Switch to preact compat
+
+| React  | Preact  | Chunk Name |
+| --- | --- | --- |
+|76.11 KB|**46.66 KB**|js/bundle|
+|4.95 KB|5.14 KB |js/main|
+|3.8 KB|3.79 KB |js/DiagnosisRoute|
+|2.79 KB|2.73 KB |js/TherapistsRoute|
+|2.5 KB|2.58 KB |js/QuestionsRoute|
+|1.25 KB |1.24 KB |js/runtime-main|
+|895 B |891 B |js/WelcomeRoute|
+|234 B |234 B|css/main|
+
+
+|  Metric | React  | Preact  |
+| --- | --- | --- |
+|First Contentful Paint |2.3 s|1.9 s|
+|Speed Index|2.8 s| 2.4 s|
+|Largest Contentful Paint|2.4 s|1.9 s|
+|Time to Interactive|2.4 s|2.1 s|
+|Total Blocking Time|100 ms|130 ms|

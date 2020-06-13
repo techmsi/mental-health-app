@@ -1,5 +1,7 @@
 let backendHost;
-const hostname = window && window.location && window.location.hostname;
+// eslint-disable-next-line no-restricted-globals
+const hostname = location && location.hostname;
+let imageBaseUrl = 'https://phq9.netlify.app';
 
 if (hostname.includes('localhost')) {
   backendHost = 'http://localhost:9000/api';
@@ -8,6 +10,7 @@ if (hostname.includes('localhost')) {
 }
 
 export const API_ENDPOINT = {
+  imageBaseUrl,
   therapists: `${backendHost}/therapists`,
   phq9: `${backendHost}/phq9`,
   diagnosis: `${backendHost}/diagnosis`

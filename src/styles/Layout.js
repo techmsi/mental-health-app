@@ -1,50 +1,43 @@
 import styled, { css } from 'styled-components';
+import { NavLink, Link } from 'react-router-dom';
+
 import { media } from 'styles/Responsive';
 import theme from 'styles/theme.json';
 
-export const Page = styled.section`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+const buttonMinWidth = `min-width: 8rem;`;
+const buttonMinHeightWidth = `min-height: 2rem; ${buttonMinWidth}`;
+const buttonMinHeightWidthMobile = `min-height: 3.5rem; ${buttonMinWidth}`;
+
+export const Page = styled.section``;
+export const NavShell = styled.nav`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  ${media.tablet`grid-column-gap: 1rem;`}
+  ${media.desktop`grid-column-gap: 1rem`}
+  height: 3rem;
+`;
+export const MainNavShell = styled(NavShell)`
+  ${media.tablet`grid-column-gap: 0;`}
+  ${media.desktop`grid-column-gap: 0`}
 `;
 
 export const Header = styled.header`
-  nav {
-    display: flex;
-    justify-content: space-between;
-    button {
-      ${media.phone`flex: 1;`}
-    }
-  }
-  h1 {
-    text-align: center;
-    font-size: 1.8rem;
-    background-color: ${theme.offwhite};
-    padding: 1rem;
-  }
+  h1,
   h2 {
-    font-size: 1.6rem;
-    padding: 1rem;
-  }
-  h3 {
-    font-size: 1.4rem;
-    padding: 1rem 0;
+    padding-left: 1rem;
   }
 `;
-
-export const SubTitle = styled.p`
-  font-size: 1.4rem;
-  padding: 1rem;
-  text-align: center;
+export const Heading = styled.h2`
+  height: 3.5rem;
 `;
+export const SubTitle = styled.p``;
 
-export const OutlineButton = styled.button`
-  border: 1px solid ${theme.lighter};
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  margin-right: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  text-align: center;
+const BasicButton = styled.button`
+  ${buttonMinHeightWidthMobile}
+  ${media.tablet`${buttonMinHeightWidth}  border-radius: 0.25rem;`}
+  ${media.desktop`${buttonMinHeightWidth}  border-radius: 0.25rem;`}
+
   transition: color 0.25s ease-in-out;
   a {
     color: ${theme.black};
@@ -56,33 +49,38 @@ export const OutlineButton = styled.button`
       border: 1px solid ${theme.medium};
     `};
 `;
-
-export const LightButton = styled(OutlineButton)`
-  background-color: ${theme.lighter};
+export const OutlineButton = styled(BasicButton)`
+  border: 1px solid ${theme.medium};
 `;
 
-export const DarkButton = styled.button`
-  display: block;
-  font-size: 1.5rem;
-  margin: 0.5rem;
-  text-align: center;
+export const LightButtonLink = styled(Link)`
+  padding: 1rem;
+  ${buttonMinHeightWidthMobile}
+  ${media.tablet`${buttonMinHeightWidth}  border-radius: 0.25rem;`}
+  ${media.desktop`${buttonMinHeightWidth}  border-radius: 0.25rem;`}
+
   transition: color 0.25s ease-in-out;
-  ${media.phone`margin: 0;`}
-  a {
-    background-color: ${theme.charcoal};
-    border-radius: 0.15rem;
-    color: ${theme.bright};
-    display: block;
-    padding: 0.5rem 1rem;
-    width: 100%;
-    ${media.phone`border-radius: 0;`}
-    &.active {
-      font-weight: bold;
-      ${media.phone`
-      background-color: ${theme.darker};
-      color: #333;
-      `}
-    }
+  ${media.tablet`border-radius: 0.25rem;`}
+  ${media.desktop`border-radius: 0.25rem;`}
+
+  background-color: ${theme.lighter};
+  border: 1px solid ${theme.medium};
+  color: ${theme.black};
+  white-space: nowrap;
+`;
+
+export const DarkButtonLink = styled(NavLink)`
+  ${buttonMinHeightWidthMobile}
+  padding: 0.5rem;
+
+  background-color: ${theme.charcoal};
+  color: ${theme.bright};
+  font-size: 1.5rem;
+  transition: color 0.25s ease-in-out;
+  &.active {
+    font-weight: bold;
+    background-color: ${theme.darker};
+    color: ${theme.charcoal};
   }
 `;
 
@@ -91,16 +89,11 @@ export const UnderlineButton = styled.div`
   font-size: 1.2rem;
   margin: 0.5rem 1rem;
   white-space: nowrap;
+  min-width: 1.5rem;
+  text-align: center;
   a {
     color: ${theme.black};
   }
-`;
-
-export const LightBlockButton = styled(LightButton)`
-  background-color: ${theme.offwhite};
-  display: block;
-  font-size: 1.4rem;
-  padding: 0.5rem;
 `;
 
 export const ErrorMessage = styled.p`
