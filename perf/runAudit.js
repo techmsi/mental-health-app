@@ -22,7 +22,11 @@ console.log(`Lighthouse audit for ${url} saved to `, reportFile);
 
 let lighthouseFlags = {
   output: 'html',
-  chromeFlags: ['--headless', '--show-paint-rects'],
+  chromeFlags: [
+    '--headless',
+    '--show-paint-rects',
+    '--ignore-certificate-errors',
+  ],
   onlyCategories: ['performance'],
   budgets,
 };
