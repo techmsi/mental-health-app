@@ -3,16 +3,24 @@ import { Route, Switch } from 'react-router-dom';
 
 import ErrorBoundary from 'App/ui/ErrorBoundary';
 
-const Welcome = React.lazy(() => import('Welcome'));
-const TherapistRoutes = React.lazy(() =>
-  import('Therapists/ui/routes-Therapist')
-);
-const QuestionsRoutes = React.lazy(() =>
-  import('Questions/ui/routes-Questions')
-);
-const DiagnosisRoutes = React.lazy(() =>
-  import('Diagnosis/ui/routes-Diagnosis')
-);
+const _Welcome = () => import(/* webpackChunkName: "WelcomeRoute" */ 'Welcome');
+const _TherapistRoutes = () =>
+  import(
+    /* webpackChunkName: "TherapistsRoute" */ 'Therapists/ui/routes-Therapist'
+  );
+const _QuestionsRoutes = () =>
+  import(
+    /* webpackChunkName: "QuestionsRoute" */ 'Questions/ui/routes-Questions'
+  );
+const _DiagnosisRoutes = () =>
+  import(
+    /* webpackChunkName: "DiagnosisRoute" */ 'Diagnosis/ui/routes-Diagnosis'
+  );
+
+const Welcome = React.lazy(_Welcome);
+const TherapistRoutes = React.lazy(_TherapistRoutes);
+const QuestionsRoutes = React.lazy(_QuestionsRoutes);
+const DiagnosisRoutes = React.lazy(_DiagnosisRoutes);
 
 class AppRoutes extends PureComponent {
   render() {
