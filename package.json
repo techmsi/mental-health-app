@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Prototype for a mental health app using redux",
   "main": "src/index.js",
+  "module": "./src/index.js",
   "keywords": [
     "mental-health",
     "react-redux"
@@ -10,6 +11,8 @@
   "author": "techmsi",
   "license": "ISC",
   "dependencies": {
+    "preact": "^10.x.x",
+    "preact-compat": "^3.x.x",
     "react": "*",
     "react-dom": "*",
     "react-redux": "*",
@@ -22,26 +25,41 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "*",
+    "chunk-manifest-webpack-plugin": "^1.1.2",
+    "customize-cra": "^1.0.0",
     "lighthouse": "*",
     "madge": "*",
     "prettier-semistandard": "*",
+    "react-app-rewired": "^2.1.6",
     "react-test-renderer": "*",
-    "redux-devtools-extension": "*"
+    "redux-devtools-extension": "*",
+    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-chunk-hash": "^0.6.0",
+    "webpackbar": "^4.0.0"
   },
   "scripts": {
-    "mimicprod" : "yarn build; cd build; ws --http2;",
+    "mimicprod": "yarn build; cd build; ws --http2;",
     "perf:audit": "node perf/runAudit",
     "perf:graph": "node perf/runGraph",
     "format": "prettier-semistandard src/*",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
