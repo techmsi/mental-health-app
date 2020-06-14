@@ -11,7 +11,7 @@ const analyzer = process.env.NODE_ENV !== 'production' ? addBundleVisualizer(): 
 module.exports = override(
   addWebpackAlias({
     react: 'preact/compat',
-    'react-dom': 'preact/compat',
+    'react-dom': 'preact/compat'
   }),
   addWebpackPlugin(
     new WebpackBar(),
