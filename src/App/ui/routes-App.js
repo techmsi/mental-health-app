@@ -1,20 +1,32 @@
 import React, { PureComponent } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-import Welcome from 'Welcome/';
-import TherapistRoutes from 'Therapists/ui/routes-Therapist';
-import QuestionsRoutes from 'Questions/ui/routes-Questions';
-import DiagnosisRoutes from 'Diagnosis/ui/routes-Diagnosis';
+import ErrorBoundary from 'App/ui/ErrorBoundary';
+
+const Welcome = React.lazy(() => import('Welcome'));
+const TherapistRoutes = React.lazy(() =>
+  import('Therapists/ui/routes-Therapist')
+);
+const QuestionsRoutes = React.lazy(() =>
+  import('Questions/ui/routes-Questions')
+);
+const DiagnosisRoutes = React.lazy(() =>
+  import('Diagnosis/ui/routes-Diagnosis')
+);
 
 class AppRoutes extends PureComponent {
   render() {
     return (
-      <>
-        <Route exact path="/" component={Welcome} />
-        <Route path="/therapists" component={TherapistRoutes} />
-        <Route exact path="/questionnaire" component={QuestionsRoutes} />
-        <Route exact path="/results" component={DiagnosisRoutes} />
-      </>
+      <ErrorBoundary>
+        <React.Suspense fallback={<span>Loading ...</span>}>
+          <Switch>
+            <Route exact path="/" component={Welcome} />
+            <Route path="/therapists" component={TherapistRoutes} />
+            <Route exact path="/questionnaire" component={QuestionsRoutes} />
+            <Route exact path="/results" component={DiagnosisRoutes} />
+          </Switch>
+        </React.Suspense>
+      </ErrorBoundary>
     );
   }
 }
