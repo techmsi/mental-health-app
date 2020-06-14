@@ -4,7 +4,6 @@ const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
 
 const budgets = require('./budget.json');
-const { NODE_ENV } = process.env;
 
 if (process.argv.length <= 2) {
   console.log('No url was provided.');
@@ -12,9 +11,11 @@ if (process.argv.length <= 2) {
 }
 
 const [url = null] = process.argv.reverse();
+const { hostname } = new URL(url);
+const timestamp = new Date().toISOString();
 const reportFile = path.join(
   path.resolve('perf', 'reports'),
-  `${NODE_ENV || 'local'}-report-${Date.now()}.html`
+  `${hostname}-report-${timestamp}.html`
 );
 
 console.log(`Lighthouse audit for ${url} saved to `, reportFile);
