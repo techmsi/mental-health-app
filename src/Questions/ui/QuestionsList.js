@@ -20,14 +20,14 @@ class QuestionsList extends Component {
   }
 
   loadList() {
-    console.log('No questions exist. Getting the list.');
+    console.debug('No questions exist. Getting the list.');
     this.props.requestApiData(API_ENDPOINT.phq9);
   }
 
   render() {
     const { loading, error, questions: list = [] } = this.props.questionnaire;
 
-    console.info('QuestionsList Page', list.length);
+    console.debug('QuestionsList Page', list.length);
 
     return (
       <div>

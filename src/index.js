@@ -7,6 +7,11 @@ import { Application } from './App/ui/Application';
 
 import 'styles/reset.css';
 
+const debugOff = process.env.NODE_ENV === 'production';
+if (debugOff) {
+  console.debug(process.env.NODE_ENV);
+  console.debug = () => {};
+}
 const rootElement = document.getElementById('root');
 
 if (rootElement.hasChildNodes()) {

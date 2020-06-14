@@ -27,7 +27,7 @@ export const randomKey = arr => {
 
 export const findById = (arr, id) => {
   const itemFound = arr && arr.length ? arr.filter(o => o.id === id)[0] : [];
-  console.log('Item found', itemFound);
+  console.debug('Item found', itemFound);
   return itemFound;
 };
 
@@ -49,7 +49,7 @@ export const sortByKey = (arr, key, order = 'asc') =>
 export const update = (state, mutations) => Object.assign({}, state, mutations);
 
 export const updateItem = (arr, itemId, newItem) => {
-  console.log(
+  console.debug(
     `UPDATE Q${itemId} in List(${arr.length} items) with `,
     newItem,
     typeof itemId

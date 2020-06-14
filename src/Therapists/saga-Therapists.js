@@ -9,7 +9,7 @@ const { success, error } = therapistActions;
 const { PENDING } = GET_THERAPISTS_ASYNC;
 
 function * getTherapists ({ url, limit }) {
-  console.log(`Get (${limit}) therapists.`);
+  console.debug(`Get (${limit}) therapists.`);
   try {
     const data = limit
       ? yield call(fetchData, url, { limit })

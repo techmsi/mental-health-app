@@ -55,7 +55,7 @@ class DiagnosisPage extends Component {
   state = {};
 
   componentDidMount() {
-    console.log('Score so far: ', this.props.score);
+    console.debug('Score so far: ', this.props.score);
     this.props.requestApiData(API_ENDPOINT.diagnosis, this.props.score);
   }
 

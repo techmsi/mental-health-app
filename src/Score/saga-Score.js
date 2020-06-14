@@ -9,7 +9,7 @@ const getScoreState = state => state.score;
 function * getScore ({ points }) {
   try {
     const score = yield select(getScoreState);
-    console.log(
+    console.debug(
       `(Saga) Update score by ${points} points. Updated Score: ${score}`
     );
     put(updateScore(points));

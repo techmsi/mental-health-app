@@ -10,7 +10,7 @@ export function withProfiler(WrappedComponent, name) {
   };
 
   const componentName = WrappedComponent.displayName;
-  console.log('\nWrappedComponent', componentName);
+  console.debug('\nWrappedComponent', componentName);
 
   return class WithProfile extends React.Component {
     state = {
@@ -44,7 +44,7 @@ export function withProfiler(WrappedComponent, name) {
         commitTime
       });
 
-      console.log('\nWrappedComponent(children)', this.props.children);
+      console.debug('\nWrappedComponent(children)', this.props.children);
       console.groupEnd();
     };
     render() {

@@ -36,7 +36,7 @@ class TherapistList extends Component {
   }
 
   sort = field => {
-    console.log('Sort by', field);
+    console.debug('Sort by', field);
     const { list } = this.props.therapists;
 
     this.setState({ list: sortByKey(list, field), sortBy: field });
@@ -46,7 +46,7 @@ class TherapistList extends Component {
     const { sortBy } = this.state;
     const { loading, error, list = [] } = this.props.therapists;
 
-    console.info('TherapistList Page', list.length);
+    console.debug('TherapistList Page', list.length);
 
     return (
       <div>

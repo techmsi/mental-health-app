@@ -19,4 +19,4 @@ export const media = devices.reduce((acc, { label, min, max = null }) => {
   return acc;
 }, {});
 
-console.log('media ', media);
+console.debug('media ', media);

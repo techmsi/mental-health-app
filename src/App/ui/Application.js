@@ -19,7 +19,7 @@ store.subscribe(
 );
 
 export const Application = () => {
-  console.log('store ', store.getState());
+  console.debug('store ', store.getState());
   return (
     <React.StrictMode>
       <Provider store={store}>

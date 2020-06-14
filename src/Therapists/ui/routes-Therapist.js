@@ -11,7 +11,7 @@ import {
 
 // List & Detail
 const TherapistRoutes = ({ match, ...props }) => {
-  console.log('Therapist Route props', props);
+  console.debug('Therapist Route props', props);
 
   return (
     <CardWrapper>
