@@ -43,3 +43,4 @@ lint/index.html
 build
 .env*
 perf/reports/*
+perf/graphs/*
