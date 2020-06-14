@@ -1,10 +1,12 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { render, hydrate } from 'react-dom';
 
 import { Application } from './App/ui/Application';
 
-import 'styles/reset.css';
-import 'styles/styles.css';
-
 const rootElement = document.getElementById('root');
-render(<Application />, rootElement);
+
+if (rootElement.hasChildNodes()) {
+  hydrate(<Application />, rootElement);
+} else {
+  render(<Application />, rootElement);
+}

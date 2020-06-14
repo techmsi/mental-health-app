@@ -22,7 +22,13 @@ a {
 li {
   list-style: none;
 }
+
 button {
   background: none;
   border: none;
+}
+
+button:focus,
+input:focus {
+  outline-color: #ffc800;
 }
