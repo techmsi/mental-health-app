@@ -1,21 +1,21 @@
 import React, { PureComponent } from 'react';
 
 class ErrorBoundary extends PureComponent {
-  constructor (props) {
-    super(props);
-    this.state = { hasError: false };
-  }
+  state = { hasError: false };
 
-  static getDerivedStateFromError (error) {
+  static getDerivedStateFromError(error) {
     return { hasError: true };
   }
 
-  render () {
-    if (this.state.hasError) {
+  render() {
+    const { hasError } = this.state;
+    const { children } = this.props;
+
+    if (hasError) {
       return <p>Loading failed! Please reload.</p>;
     }
 
-    return this.props.children;
+    return children;
   }
 }
 

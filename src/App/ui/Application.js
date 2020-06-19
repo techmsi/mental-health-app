@@ -5,9 +5,10 @@ import throttle from 'lodash/throttle';
 import configureStore from 'store/';
 import { loadState, saveState } from 'store/persistState';
 import App from 'App/ui/App';
+import { AppWithBoundary } from 'App/ui/AppWithBoundary';
 
 const persistedState = loadState();
-export const store = configureStore(persistedState);
+const store = configureStore(persistedState);
 store.subscribe(
   throttle(() => {
     const { therapists, questionnaire } = store.getState();
@@ -23,7 +24,9 @@ export const Application = () => {
   return (
     <React.StrictMode>
       <Provider store={store}>
-        <App />
+        <AppWithBoundary>
+          <App />
+        </AppWithBoundary>
       </Provider>
     </React.StrictMode>
   );
