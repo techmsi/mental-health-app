@@ -25,17 +25,18 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "*",
-    "chunk-manifest-webpack-plugin": "^1.1.2",
-    "customize-cra": "^1.0.0",
+    "chunk-manifest-webpack-plugin": "*",
+    "customize-cra": "*",
+    "husky": "*",
     "lighthouse": "*",
     "madge": "*",
     "prettier-semistandard": "*",
-    "react-app-rewired": "^2.1.6",
+    "react-app-rewired": "*",
     "react-test-renderer": "*",
     "redux-devtools-extension": "*",
-    "webpack-bundle-analyzer": "^3.8.0",
-    "webpack-chunk-hash": "^0.6.0",
-    "webpackbar": "^4.0.0"
+    "webpack-bundle-analyzer": "*",
+    "webpack-chunk-hash": "*",
+    "webpackbar": "*"
   },
   "scripts": {
     "mimicprod": "yarn build; cd build; ws --http2;",
@@ -61,5 +62,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format"
+    }
   }
 }
