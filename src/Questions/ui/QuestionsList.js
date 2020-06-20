@@ -3,9 +3,12 @@ import React, { Component } from 'react';
 
 import { ErrorMessage } from 'styles/Layout';
 import QuestionsPage from 'Questions/ui/QuestionsPage';
-import Spinner from 'Spinner/';
 
 import { API_ENDPOINT } from 'Api/api-config';
+import asyncComponent from 'App/ui/withLazy';
+const Spinner = asyncComponent(() =>
+  import(/* webpackChunkName: "Spinner" */ 'Spinner/')
+);
 
 class QuestionsList extends Component {
   state = {};

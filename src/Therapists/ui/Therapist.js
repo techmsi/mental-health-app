@@ -2,7 +2,15 @@
 import React from 'react';
 
 import { findById } from 'util/helpers';
-import { TherapistCard } from 'Therapists/ui/TherapistCard';
+import asyncComponent from 'App/ui/withLazy';
+
+const TherapistCard = asyncComponent(
+  () =>
+    import(
+      /* webpackChunkName: "TherapistCard" */ 'Therapists/ui/TherapistCard'
+    ),
+  'TherapistCard'
+);
 
 export const Therapist = ({
   match: {

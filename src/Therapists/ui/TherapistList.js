@@ -2,11 +2,14 @@
 import React, { Component } from 'react';
 import { sortByKey } from 'util/helpers';
 
-import Spinner from '../../Spinner/';
 import { ErrorMessage } from 'styles/Layout';
-import TherapistsPage from './TherapistsPage';
+import TherapistsPage from 'Therapists/ui/TherapistsPage';
 
 import { API_ENDPOINT } from 'Api/api-config';
+import asyncComponent from 'App/ui/withLazy';
+const Spinner = asyncComponent(() =>
+  import(/* webpackChunkName: "Spinner" */ 'Spinner/')
+);
 
 const routeSubpath = ({ pathname }) => {
   const [, , subPath = null] = pathname.split('/');

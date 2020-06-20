@@ -3,12 +3,36 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import { CardWrapper } from 'Therapists/ui/styles-Therapist';
-import {
-  TherapistListConnect,
-  TherapistChosenConnect,
-  TherapistConnect
-} from 'Therapists/connect-Therapist';
+import asyncComponent from 'App/ui/withLazy';
+// import {
+//   // TherapistListConnect,
+//   // TherapistChosenConnect,
+//   TherapistConnect
+// } from 'Therapists/connect-Therapist';
 
+const TherapistListConnect = asyncComponent(
+  () =>
+    import(
+      /* webpackChunkName: "TherapistListConnect" */ 'Therapists/connect-Therapist'
+    ),
+  'TherapistListConnect'
+);
+
+const TherapistChosenConnect = asyncComponent(
+  () =>
+    import(
+      /* webpackChunkName: "TherapistChosenConnect" */ 'Therapists/connect-Therapist'
+    ),
+  'TherapistChosenConnect'
+);
+
+const TherapistConnect = asyncComponent(
+  () =>
+    import(
+      /* webpackChunkName: "TherapistConnect" */ 'Therapists/connect-Therapist'
+    ),
+  'TherapistConnect'
+);
 // List & Detail
 const TherapistRoutes = ({ match, ...props }) => {
   console.debug('Therapist Route props', props);
