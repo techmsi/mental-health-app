@@ -1,45 +1,11 @@
 // Component: TherapistsPage
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import { Header, LightButton, OutlineButton } from 'styles/Layout';
-import { CardShell, CardList } from './styles-Therapist';
+import { Header } from 'styles/Layout';
+import { CardList } from 'Therapists/ui/styles-Therapist';
 
-import { TherapistCard } from './Therapist';
-
-const TherapistListCard = therapist => (
-  <CardShell>
-    <Header>
-      <LightButton>
-        <Link to={`/therapists/${therapist.id}/`} className='read-more'>
-          See Details
-        </Link>
-      </LightButton>
-      <LightButton>
-        <Link to={`/therapists/${therapist.id}/contacted`} className='contact'>
-          Contact
-        </Link>
-      </LightButton>
-    </Header>
-    <TherapistCard {...therapist} showImage={false} />
-  </CardShell>
-);
-
-const SortControls = ({ onSort, by }) => (
-  <nav className='sort'>
-    <div>
-      <OutlineButton active={by === 'name'} onClick={() => onSort('name')}>
-        Sort by Name
-      </OutlineButton>
-      <OutlineButton
-        active={by === 'specialty'}
-        onClick={() => onSort('specialty')}
-      >
-        Sort by Specialty
-      </OutlineButton>
-    </div>
-  </nav>
-);
+import { SortControls } from 'Therapists/ui/SortControls';
+import { TherapistListCard } from 'Therapists/ui/TherapistListCard';
 
 const TherapistsPage = ({ list, onSort, by }) => {
   return (

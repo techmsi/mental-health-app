@@ -5,7 +5,8 @@ import { bindActionCreators } from 'redux';
 import { therapistActions } from 'Therapists/actions-Therapists';
 
 import UiTherapistList from 'Therapists/ui/TherapistList';
-import Therapist, { TherapistChosen } from 'Therapists/ui/Therapist';
+import Therapist from 'Therapists/ui/Therapist';
+import { TherapistChosen } from 'Therapists/ui/TherapistChosen';
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
