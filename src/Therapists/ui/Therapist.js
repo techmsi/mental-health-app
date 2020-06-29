@@ -4,12 +4,12 @@ import React from 'react';
 import { findById } from 'util/helpers';
 import asyncComponent from 'App/ui/withLazy';
 
-const TherapistCard = asyncComponent(
+const TherapistCardDetails = asyncComponent(
   () =>
     import(
-      /* webpackChunkName: "TherapistCard" */ 'Therapists/ui/TherapistCard'
+      /* webpackChunkName: "TherapistCardDetails" */ 'Therapists/ui/TherapistCardDetails'
     ),
-  'TherapistCard'
+  'TherapistCardDetails'
 );
 
 export const Therapist = ({
@@ -21,7 +21,7 @@ export const Therapist = ({
   const detail = findById(therapists.list, therapistId);
   console.debug('Therapist Card', { therapists, detail });
 
-  return <TherapistCard {...detail} />;
+  return <TherapistCardDetails {...detail} />;
 };
 
 export default Therapist;

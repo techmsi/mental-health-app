@@ -4,11 +4,6 @@ import { Route } from 'react-router-dom';
 
 import { CardWrapper } from 'Therapists/ui/styles-Therapist';
 import asyncComponent from 'App/ui/withLazy';
-// import {
-//   // TherapistListConnect,
-//   // TherapistChosenConnect,
-//   TherapistConnect
-// } from 'Therapists/connect-Therapist';
 
 const TherapistListConnect = asyncComponent(
   () =>
@@ -47,7 +42,7 @@ const TherapistRoutes = ({ match, ...props }) => {
       <Route exact path={match.url} component={TherapistListConnect} />
       <Route
         exact
-        path={match.url + '/:therapistId'}
+        path={match.url + '/:therapistId/details'}
         component={TherapistConnect}
       />
       <Route

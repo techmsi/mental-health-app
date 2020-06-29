@@ -1,32 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import { Header, LightButton } from 'styles/Layout';
-import { CardShell } from 'Therapists/ui/styles-Therapist';
+import { CardShell, CardGrid } from 'Therapists/ui/styles-Therapist';
 import asyncComponent from 'App/ui/withLazy';
 
-const TherapistCard = asyncComponent(
+const TherapistMenu = asyncComponent(
   () =>
     import(
-      /* webpackChunkName: "TherapistCard" */ 'Therapists/ui/TherapistCard'
+      /* webpackChunkName: "TherapistMenu" */ 'Therapists/ui/TherapistMenu'
     ),
-  'TherapistCard'
+  'TherapistMenu'
+);
+
+const TherapistCardImage = asyncComponent(
+  () =>
+    import(
+      /* webpackChunkName: "TherapistCardImage" */ 'Therapists/ui/TherapistCardImage'
+    ),
+  'TherapistCardImage'
+);
+
+const TherapistCardSummary = asyncComponent(
+  () =>
+    import(
+      /* webpackChunkName: "TherapistCardSummary" */ 'Therapists/ui/TherapistCardSummary'
+    ),
+  'TherapistCardSummary'
 );
 
 export const TherapistListCard = therapist => (
-  <CardShell>
-    <Header>
-      <LightButton>
-        <Link to={`/therapists/${therapist.id}/`} className="read-more">
-          See Details
-        </Link>
-      </LightButton>
-      <LightButton>
-        <Link to={`/therapists/${therapist.id}/contacted`} className="contact">
-          Contact
-        </Link>
-      </LightButton>
-    </Header>
-    <TherapistCard {...therapist} showImage={false} />
+  <CardShell as={CardGrid} key={therapist.id} className="therapist-item">
+    <TherapistMenu therapistId={therapist.id} />
+    <TherapistCardImage image={therapist.image} name={therapist.name} />
+    <TherapistCardSummary {...therapist} />
   </CardShell>
 );

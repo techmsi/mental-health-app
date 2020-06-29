@@ -17,12 +17,7 @@ const TherapistsPage = ({ list, onSort, by }) => {
         </h3>
       </Header>
       <CardList className='therapists-list'>
-        {list &&
-          list.map((therapist, i) => (
-            <li key={therapist.id} className='therapist-item'>
-              <TherapistListCard {...therapist} />
-            </li>
-          ))}
+        {list && list.map(TherapistListCard)}
       </CardList>
     </section>
   );
