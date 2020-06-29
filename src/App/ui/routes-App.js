@@ -23,6 +23,10 @@ const DiagnosisRoutes = asyncComponent(() =>
   )
 );
 
+const StyleGuide = asyncComponent(() =>
+  import(/* webpackChunkName: "StyleGuide" */ 'styles/StyleGuide')
+);
+
 class AppRoutes extends PureComponent {
   render() {
     return (
@@ -31,6 +35,7 @@ class AppRoutes extends PureComponent {
         <Route path="/therapists" component={TherapistRoutes} />
         <Route exact path="/questionnaire" component={QuestionsRoutes} />
         <Route exact path="/results" component={DiagnosisRoutes} />
+        <Route exact path="/styles" component={StyleGuide} />
       </Switch>
     );
   }

@@ -109,3 +109,24 @@ export const ErrorMessage = styled.p`
   font-size: 0.85rem;
   padding: 0.25rem 1rem;
 `;
+
+export const Swatches = styled.div`
+  ${media.desktop`
+         display: flex; 
+         flex-wrap: wrap;
+         padding: 1rem;
+         `}
+  span {
+    display: block;
+    font-size: 1rem;
+    height: 8rem;
+    ${media.desktop`
+      flex:1; 
+      min-width: 8rem;
+      margin: 1rem;
+    `}
+  }
+  em {
+    ${media.phone`margin: 1rem;`}
+  }
+`;
