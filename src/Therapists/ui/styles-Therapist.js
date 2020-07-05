@@ -97,6 +97,12 @@ const squareImageMobile = `
     min-height: 20rem;
 `;
 
+export const CardImage = styled.img`
+  ${media.phone`${squareImageMobile}`}
+  ${media.tablet`${squareImage}`}
+  ${media.desktop`${squareImage}`}
+`;
+
 const gridAreas = `
   img {
     grid-area: headshot;
