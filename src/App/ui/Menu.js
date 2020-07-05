@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Header, DarkButton } from 'styles/Layout';
+import { Header, DarkButton, MainNavShell } from 'styles/Layout';
 
 const Menu = () => (
   <Header>
-    <nav>
+    <MainNavShell>
       <DarkButton bold>
         <NavLink exact to='/'>
           Home
@@ -14,7 +14,7 @@ const Menu = () => (
       <DarkButton bold>
         <NavLink to='/therapists/list'> Therapists</NavLink>
       </DarkButton>
-    </nav>
+    </MainNavShell>
   </Header>
 );
 

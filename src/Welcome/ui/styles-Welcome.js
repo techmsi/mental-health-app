@@ -7,6 +7,7 @@ export const WelcomeText = styled.p`
   ${media.phone`
      order: 2;
   `}
+  min-height: 10rem;
 `;
 
 export const WelcomeButton = styled(DarkButton)`

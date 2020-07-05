@@ -22,20 +22,22 @@ export const CardList = styled.ul`
   counter-reset: section;
   ${media.desktop`
     ${rowWrap}
+    justify-content: flex-start;
     > * {
-      flex-basis: 50%;
+      flex:1;
+      max-width: 35rem;
     }
   `}
   .therapist-item {
-    padding: 1rem;
-
     .name:before {
-      position: relative;
+      display: inline-block;
       counter-increment: section;
       content: counter(section);
-      left: -15px;
       font-size: 0.75rem;
-      top: -5px;
+      height: 2rem;
+      left: -1.5rem;
+      position: absolute;
+      width: 1rem;
     }
   }
 `;
@@ -43,15 +45,26 @@ export const CardList = styled.ul`
 export const CardShell = styled.li`
   font-size: 1.2rem;
   line-height: 2rem;
+  min-height: 18rem;
+  padding: 1rem;
 
+  .cityState {
+    text-transform: uppercase;
+    padding-top: 0.5rem;
+    padding-left: 2rem;
+    font-size: 0.85rem;
+  }
   .name {
+    position: relative;
     font-size: 1.4rem;
     font-weight: bold;
+    min-height: 2rem;
   }
 
   .email {
     cursor: pointer;
     font-size: 1rem;
+    min-height: 2rem;
   }
   .specialty {
     font-style: italic;
@@ -59,7 +72,9 @@ export const CardShell = styled.li`
   }
   .specialty:before {
     content: 'Specialty: ';
-    padding-right: 0.5rem;
+    height: 2rem;
+    width: 6rem;
+    display: inline-block;
   }
   img {
     border: 1px solid ${midgray};
@@ -69,15 +84,25 @@ export const CardShell = styled.li`
 
 const squareImage = `
     object-fit: cover;
-    width: 11rem;
-    height: 11rem;
+    width: 10rem;
+    height: 10rem;
     background-position:center;
     border-radius: 0.4rem;
+    margin-left: 1rem;
+    min-height: 10rem;
+`;
+
+const squareImageMobile = `
+    object-fit: contain;
+    min-height: 20rem;
 `;
 
 const gridAreas = `
   img {
     grid-area: headshot;
+  }
+  .cityState {
+     grid-area: cityState;
   }
   .therapist__menu {
     grid-area: menu;
@@ -91,11 +116,9 @@ const gridAreas = `
   .bio {
     grid-area: bio;
   }
-
   .email {
     grid-area: email;
   }
-
   .specialty {
     grid-area: specialty;
   }
@@ -103,13 +126,16 @@ const gridAreas = `
 
 const listingGridAreas = `
  grid-template-areas:
-    'menu  menu  menu'
+    'menu  .  cityState'
     'headshot headshot  fullName'
     'headshot headshot  specialty'
     'headshot headshot  email';
 `;
 
 export const DetailGrid = styled(CardShell)`
+          .cityState {
+            padding-left: 0;
+          }
          .header,
          .email {
            border-bottom: 5px solid ${light};
@@ -134,7 +160,10 @@ export const DetailGrid = styled(CardShell)`
        `;
 
 export const CardGrid = styled(CardShell)`
-  ${media.desktop`
+         .therapist__menu {
+           min-height: 4rem;
+         }
+         ${media.desktop`
          display: grid;
          .therapist__menu {
            > * {
@@ -143,7 +172,7 @@ export const CardGrid = styled(CardShell)`
          }
          `}
 
-  ${media.tablet`
+         ${media.tablet`
          display: grid;
          .therapist__menu {
            > * {
@@ -152,35 +181,29 @@ export const CardGrid = styled(CardShell)`
          }
          
          `}
-         grid: auto-flow / 1rem 10rem 1fr;
-  grid-row-gap: 0.5rem;
-  grid-column-gap: 2rem;
-  ${gridAreas}
+         place-content: flex-start;
+         ${gridAreas}
 
-  ${media.phone` 
+         ${media.phone` 
          .therapist__menu {
-           margin-bottom: 1rem;
+           display: flex;
+           justify-content: center;
            > * {
-             width: 100%;
+             flex: 1;
+             margin-bottom: 1rem;
            }
          }
          `}
 
          img {
-    justify-self: center;
-    ${media.desktop`${squareImage}`}
-    ${media.tablet`${squareImage}`}
-  }
-  .name {
-    align-self: end;
-  }
+           ${media.phone`${squareImageMobile}`}
+           ${media.tablet`${squareImage}`}
+           ${media.desktop`${squareImage}`}
+         }
 
-  .specialty {
-    align-self: end;
-  }
-
-  ${listingGridAreas}
-`;
+         grid-column-gap: 10px;
+         ${listingGridAreas}
+       `;
 
 export const ThankYouShell = styled.p`
   position: relative;

@@ -8,6 +8,6 @@ export const TherapistCardImage = ({
   image ? (
     <img
       src={`${baseUrl}/images/headshots/${image}?raw=true`}
-      alt={`${name}`}
+      alt={`headshot for ${name}`}
     />
   ) : null;

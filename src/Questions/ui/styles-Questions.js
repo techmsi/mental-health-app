@@ -56,6 +56,7 @@ export const UnansweredListShell = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 3rem;
 
   ${media.phone`
   justify-content: space-around; 

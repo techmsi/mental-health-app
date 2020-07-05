@@ -11,10 +11,9 @@ const TherapistsPage = ({ list, onSort, by }) => {
   return (
     <section className='therapists'>
       <Header>
+        <h1>Certified Therapists</h1>
         <SortControls onSort={onSort} by={by} />
-        <h3>
-          Please choose a <b>Therapist</b> from the list below:
-        </h3>
+        <h2>Book an Appointment</h2>
       </Header>
       <CardList className='therapists-list'>
         {list && list.map(TherapistListCard)}
