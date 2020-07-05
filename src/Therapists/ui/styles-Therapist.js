@@ -24,7 +24,7 @@ export const CardList = styled.ul`
     ${rowWrap}
     justify-content: flex-start;
     > * {
-      flex:1;
+      flex: 1 1 33%;
       max-width: 35rem;
     }
   `}
