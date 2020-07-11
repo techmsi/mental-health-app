@@ -97,14 +97,14 @@ const squareImageMobile = `
     min-height: 20rem;
 `;
 
-export const CardImage = styled.img`
+export const CardImage = styled.picture`
   ${media.phone`${squareImageMobile}`}
   ${media.tablet`${squareImage}`}
   ${media.desktop`${squareImage}`}
 `;
 
 const gridAreas = `
-  img {
+  picture {
     grid-area: headshot;
   }
   .cityState {

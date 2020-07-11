@@ -11,6 +11,7 @@
   "author": "techmsi",
   "license": "ISC",
   "dependencies": {
+    "babel-plugin-styled-components": "^1.10.7",
     "preact": "^10.x.x",
     "preact-compat": "^3.x.x",
     "react": "*",
@@ -36,9 +37,11 @@
     "redux-devtools-extension": "*",
     "webpack-bundle-analyzer": "*",
     "webpack-chunk-hash": "*",
-    "webpackbar": "*"
+    "webpackbar": "*",
+    "worker-loader": "^2.0.0"
   },
   "scripts": {
+    "toWebP": "for file in ./public/images/headshots/*; do cwebp \"$file\" -o \"${file%.*}.webp\"; done",
     "mimicprod": "yarn build; cd build; ws --http2;",
     "perf:audit": "node perf/runAudit",
     "perf:graph": "node perf/runGraph",

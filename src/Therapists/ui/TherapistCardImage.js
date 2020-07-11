@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { CardImage } from 'Therapists/ui/styles-Therapist';
+import { API_ENDPOINT } from 'Api/api-config';
 
 const placeHolder =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
+
+const observerOptions = {
+  threshold: 0.01,
+  rootMargin: '5%'
+};
 
 export const LazyImage = ({ src, alt }) => {
   const [imageSrc, setImageSrc] = useState(placeHolder);
@@ -14,23 +20,16 @@ export const LazyImage = ({ src, alt }) => {
 
     if (imageRef && imageSrc === placeHolder) {
       if (IntersectionObserver) {
-        observer = new IntersectionObserver(
-          entries => {
-            entries.forEach(entry => {
-              // when image is visible in the viewport + rootMargin
-              if (
-                !didCancel &&
-                (entry.intersectionRatio > 0 || entry.isIntersecting)
-              ) {
-                setImageSrc(src);
-              }
-            });
-          },
-          {
-            threshold: 0.01,
-            rootMargin: '5%'
-          }
-        );
+        observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            const { intersectionRatio, isIntersecting } = entry;
+            const inViewport = intersectionRatio > 0 || isIntersecting;
+            // when image is visible in the viewport + rootMargin
+            if (!didCancel && inViewport) {
+              setImageSrc(src);
+            }
+          });
+        }, observerOptions);
         observer.observe(imageRef);
       } else {
         // Old browsers fallback
@@ -46,17 +45,22 @@ export const LazyImage = ({ src, alt }) => {
     };
   }, [imageRef, imageSrc, src]);
 
-  return <CardImage ref={setImageRef} src={imageSrc} alt={alt} />;
+  return (
+    <CardImage ref={setImageRef}>
+      <source srcSet={imageSrc.replace('.jpg', '.webp')} type='image/webp' />
+      <img src={imageSrc} alt={alt} />
+    </CardImage>
+  );
 };
 
 export const TherapistCardImage = ({
   image,
   name,
-  baseUrl = 'https://github.com/techmsi/mental-health-app/blob/master/public/'
+  baseUrl = API_ENDPOINT.imageBaseUrl
 }) => {
   return image ? (
     <LazyImage
-      src={`${baseUrl}/images/headshots/${image}?raw=true`}
+      src={`${baseUrl}/images/headshots/${image}`}
       alt={`headshot for ${name}`}
       loading='lazy'
     />
