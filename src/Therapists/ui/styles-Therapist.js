@@ -171,6 +171,7 @@ export const CardGrid = styled(CardShell)`
          }
          ${media.desktop`
          display: grid;
+         max-width: 28rem;
          .therapist__menu {
            > * {
              min-width: 6rem;
