@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { CardImage } from 'Therapists/ui/styles-Therapist';
 import { API_ENDPOINT } from 'Api/api-config';
+import { ImgObserver } from 'util/ImgObserver';
 
 const placeHolder =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
-
-const observerOptions = {
-  threshold: 0.01,
-  rootMargin: '5%'
-};
 
 export const LazyImage = ({ src, alt }) => {
   const [imageSrc, setImageSrc] = useState(placeHolder);
@@ -16,24 +12,22 @@ export const LazyImage = ({ src, alt }) => {
 
   useEffect(() => {
     let observer;
+    let fromCacheImage;
     let didCancel = false;
 
     if (imageRef && imageSrc === placeHolder) {
       if (IntersectionObserver) {
-        observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            const { intersectionRatio, isIntersecting } = entry;
-            const inViewport = intersectionRatio > 0 || isIntersecting;
-            // when image is visible in the viewport + rootMargin
-            if (!didCancel && inViewport) {
-              setImageSrc(src);
-            }
-          });
-        }, observerOptions);
+        const { imageObserver, cachedImage } = ImgObserver(
+          didCancel,
+          src,
+          setImageSrc
+        );
+        observer = imageObserver;
+        fromCacheImage = cachedImage;
         observer.observe(imageRef);
       } else {
         // Old browsers fallback
-        setImageSrc(src);
+        setImageSrc(fromCacheImage || src);
       }
     }
     return () => {
