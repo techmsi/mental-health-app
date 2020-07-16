@@ -35,12 +35,14 @@
     "react-app-rewired": "*",
     "react-test-renderer": "*",
     "redux-devtools-extension": "*",
+    "sharp": "*",
     "webpack-bundle-analyzer": "*",
     "webpack-chunk-hash": "*",
     "webpackbar": "*",
     "worker-loader": "^2.0.0"
   },
   "scripts": {
+    "crop":"node ./src/crop",
     "toWebP": "for file in ./public/images/headshots/*; do cwebp \"$file\" -o \"${file%.*}.webp\"; done",
     "mimicprod": "yarn build; cd build; ws --http2;",
     "perf:audit": "node perf/runAudit",
