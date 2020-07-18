@@ -7,7 +7,7 @@ import { loadState, saveState } from 'store/persistState';
 
 import App from 'App/ui/App';
 import { AppWithBoundary } from 'App/ui/AppWithBoundary';
-import { questionnaire } from 'Questions/reducer-Questions';
+// import { questionnaire } from 'Questions/reducer-Questions';
 
 const persistedState = loadState();
 const store = configureStore(persistedState);
