@@ -139,78 +139,78 @@ const listingGridAreas = `
 `;
 
 export const DetailGrid = styled(CardShell)`
-          .cityState {
-            padding-left: 0;
-          }
-         .header,
-         .email {
-           border-bottom: 5px solid ${light};
-           padding-bottom: 0.75rem;
-           margin-bottom: 0.75rem;
-         }
-         .email {
-           ${media.phone`border-width:0`}
-         }
-         .bio {
-           padding: 1rem 1.5rem;
-           > * {
-             margin-bottom: 1rem;
-           }
-         }
-         img {
-           ${media.desktop`float:right; max-width: 20rem; margin: 1rem;`}
-           ${media.tablet`float:right; max-width: 20rem; margin: 1rem;`}
-           
-           border: 10px solid ${light};
-         }
-       `;
+  .cityState {
+    padding-left: 0;
+  }
+  .header,
+  .email {
+    border-bottom: 5px solid ${light};
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .email {
+    ${media.phone`border-width:0`}
+  }
+  .bio {
+    padding: 1rem 1.5rem;
+    > * {
+      margin-bottom: 1rem;
+    }
+  }
+  img {
+    ${media.desktop`float:right; max-width: 20rem; margin: 1rem;`}
+    ${media.tablet`float:right; max-width: 20rem; margin: 1rem;`}
+    
+    border: 10px solid ${light};
+  }
+`;
 
 export const CardGrid = styled(CardShell)`
-         .therapist__menu {
-           min-height: 4rem;
-         }
-         ${media.desktop`
-         display: grid;
-         max-width: 28rem;
-         .therapist__menu {
-           > * {
-             min-width: 6rem;
-           }
-         }
-         `}
+  .therapist__menu {
+    min-height: 4rem;
+  }
+  ${media.desktop`
+  display: grid;
+  max-width: 28rem;
+  .therapist__menu {
+    > * {
+      min-width: 6rem;
+    }
+  }
+  `}
 
-         ${media.tablet`
-         display: grid;
-         .therapist__menu {
-           > * {
-             min-width: 6rem;
-           }
-         }
-         
-         `}
-         place-content: flex-start;
-         ${gridAreas}
+  ${media.tablet`
+  display: grid;
+  .therapist__menu {
+    > * {
+      min-width: 6rem;
+    }
+  }
+  
+  `}
+  place-content: flex-start;
+  ${gridAreas}
 
-         ${media.phone` 
-         .therapist__menu {
-           display: flex;
-           justify-content: center;
-           > * {
-             flex: 1;
-             margin-bottom: 1rem;
-           }
-         }
-         `}
+  ${media.phone` 
+  .therapist__menu {
+    display: flex;
+    justify-content: center;
+    > * {
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+  }
+  `}
 
-         img {
-           ${media.phone`${squareImageMobile}`}
-           ${media.tablet`${squareImage}`}
-           ${media.desktop`${squareImage}`}
-         }
+  img {
+    ${media.phone`${squareImageMobile}`}
+    ${media.tablet`${squareImage}`}
+    ${media.desktop`${squareImage}`}
+  }
 
-         grid-column-gap: 10px;
-         ${listingGridAreas}
-       `;
+  grid-column-gap: 10px;
+  ${listingGridAreas}
+`;
 
 export const ThankYouShell = styled.p`
   position: relative;

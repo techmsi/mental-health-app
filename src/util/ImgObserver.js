@@ -3,7 +3,9 @@ import { getCachedImage } from 'worker/imageLoad/loadImages';
 
 const observerOptions = {
   threshold: 0.01,
-  rootMargin: '5%'
+  rootMargin: '5%',
+  trackVisibility: true,
+  delay: 100
 };
 
 export const ImgObserver = (didCancel, src, setImageSrc) => {

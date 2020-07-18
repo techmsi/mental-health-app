@@ -1,4 +1,4 @@
-import asyncComponent from 'App/ui/withLazy';
+import asyncComponent from 'App/ui/asyncComponent';
 export const Menu = asyncComponent(() =>
   import(
     /* webpackChunkName: "MenuBar" */

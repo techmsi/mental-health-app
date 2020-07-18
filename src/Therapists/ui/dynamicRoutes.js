@@ -1,4 +1,4 @@
-import asyncComponent from 'App/ui/withLazy';
+import asyncComponent from 'App/ui/asyncComponent';
 export const TherapistSortControls = asyncComponent(
   () =>
     import(
@@ -12,6 +12,13 @@ export const TherapistCardDetails = asyncComponent(
       /* webpackChunkName: "TherapistCardDetails" */ 'Therapists/ui/TherapistCardDetails'
     ),
   'TherapistCardDetails'
+);
+export const LazyImage = asyncComponent(
+  () =>
+    import(
+      /* webpackChunkName: "TherapistCardImageLazy" */ 'Therapists/ui/LazyImage'
+    ),
+  'LazyImage'
 );
 export const TherapistCardImage = asyncComponent(
   () =>
