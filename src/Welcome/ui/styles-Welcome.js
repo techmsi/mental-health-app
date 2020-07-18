@@ -1,28 +1,25 @@
 import styled from 'styled-components';
 import { media } from 'styles/Responsive';
-import { DarkButton } from 'styles/Layout';
+import { DarkButtonLink, Page } from 'styles/Layout';
 
 export const WelcomeText = styled.p`
-  padding: 1.5rem;
-  ${media.phone`
-     order: 2;
-  `}
+  ${media.phone`order: 2;`}
   min-height: 10rem;
+  padding: 1.5rem;
 `;
 
-export const WelcomeButton = styled(DarkButton)`
-  ${media.phone`
-     align-self: center;
-     order: 1;
-     max-width: 20rem;
-     margin-top: 1.5rem;
-    a{border-radius: 0.25rem;}
-  `}
+export const WelcomeButton = styled(DarkButtonLink)`
+  align-self: center;
+  border-radius: 0.25rem;
+  margin-top: 1.5rem;
+  max-width: 25rem;
+  max-height: 5rem;
+  padding: 1rem;
+
+  ${media.phone`order: 1;`}
 `;
 
-export const WelcomeShell = styled.section`
+export const WelcomeShell = styled(Page)`
   line-height: 2rem;
-  display: flex;
-  flex-direction: column;
   text-align: center;
 `;

@@ -26,6 +26,7 @@ li {
 button {
   background: none;
   border: none;
+  font-size: 1rem;
 }
 
 button:focus,

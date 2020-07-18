@@ -1,6 +1,5 @@
 // Stateless Component: Welcome Page
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { Header } from 'styles/Layout';
 import {
@@ -24,9 +23,7 @@ const Welcome = props => (
       it can be used to make a tentative diagnosis of depression in at-risk
       populations - eg, those with coronary heart disease or after stroke.
     </WelcomeText>
-    <WelcomeButton>
-      <Link to='/questionnaire'> Begin Questionnaire</Link>
-    </WelcomeButton>
+    <WelcomeButton to='/questionnaire'> Begin Questionnaire</WelcomeButton>
   </WelcomeShell>
 );
 
