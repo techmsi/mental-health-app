@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { UnderlineButton } from 'styles/Layout';
 import { UnansweredListShell } from 'Questions/ui/styles-Questions';
 
-const UnasweredList = ({ unanswered }) => (
+export const UnansweredList = ({ unanswered }) => (
   <UnansweredListShell>
     <h3 className='header'>Unanswered</h3>
     {unanswered.map(question => (
@@ -20,5 +20,3 @@ const UnasweredList = ({ unanswered }) => (
     ))}
   </UnansweredListShell>
 );
-
-export default UnasweredList;

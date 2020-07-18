@@ -24,7 +24,7 @@ export const cacheResource = async ({ src }) => {
 
 export const getCachedImage = async src => {
   const cache = await caches.open('MentalHealthApp');
-  const { url = null } = await cache.match(src);
+  const cachedImageFound = await cache.match(src);
 
-  return url;
+  return cachedImageFound && cachedImageFound.url ? cachedImageFound.url : src;
 };

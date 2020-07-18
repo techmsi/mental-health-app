@@ -1,15 +1,8 @@
 import React from 'react';
 import { findById } from 'util/helpers';
 import { ThankYouShell } from 'Therapists/ui/styles-Therapist';
-import asyncComponent from 'App/ui/withLazy';
 
-const TherapistCardImage = asyncComponent(
-  () =>
-    import(
-      /* webpackChunkName: "TherapistCardImage" */ 'Therapists/ui/TherapistCardImage'
-    ),
-  'TherapistCardImage'
-);
+import { TherapistCardImage } from 'Therapists/ui/dynamicRoutes';
 
 export const TherapistChosen = ({
   match: {
@@ -24,10 +17,10 @@ export const TherapistChosen = ({
   const { image, name } = therapistDetail;
 
   return (
-    <ThankYouShell className="therapists__thanks">
+    <ThankYouShell className='therapists__thanks'>
       Thank you for choosing a therapist.
       <TherapistCardImage image={image} name={name} />
-      <span className="name">{name}</span> will be contacted on your behalf.
+      <span className='name'>{name}</span> will be contacted on your behalf.
     </ThankYouShell>
   );
 };

@@ -2,26 +2,12 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import { Page } from 'styles/Layout';
-import asyncComponent from 'App/ui/withLazy';
-
-const Menu = asyncComponent(() =>
-  import(
-    /* webpackChunkName: "MenuBar" */
-    /* webpackPreload: true */
-    'App/ui/Menu'
-  )
-);
-const AppRoutes = asyncComponent(() =>
-  import(/* webpackChunkName: "AppRoutes" */ 'App/ui/routes-App')
-);
-
+import { AppRoutes, Menu } from 'App/ui/dynamicRoutes';
 const App = () => (
-  <Page className="app">
+  <Page className='app'>
     <BrowserRouter>
-      <main>
-        <Menu />
-        <AppRoutes />
-      </main>
+      <Menu />
+      <AppRoutes />
     </BrowserRouter>
   </Page>
 );

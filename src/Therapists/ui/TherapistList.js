@@ -6,10 +6,7 @@ import { ErrorMessage } from 'styles/Layout';
 import TherapistsPage from 'Therapists/ui/TherapistsPage';
 
 import { API_ENDPOINT } from 'Api/api-config';
-import asyncComponent from 'App/ui/withLazy';
-const Spinner = asyncComponent(() =>
-  import(/* webpackChunkName: "Spinner" */ 'Spinner/')
-);
+import { Spinner } from 'App/ui/dynamicRoutes';
 
 const routeSubpath = ({ pathname }) => {
   const [, , subPath = null] = pathname.split('/');

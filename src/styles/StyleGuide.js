@@ -1,6 +1,6 @@
 import React from 'react';
 import themeColors from 'styles/theme.json';
-import { Swatches } from './Layout';
+import { Swatches } from 'styles/Swatches';
 
 const swatches = Object.entries(themeColors).map(([name, background]) => ({
   name,
@@ -14,6 +14,7 @@ const Swatch = ({ name, background }) => (
     </em>
   </div>
 );
+
 const StyleGuide = () => <Swatches>{swatches.map(Swatch)}</Swatches>;
 
 export default StyleGuide;

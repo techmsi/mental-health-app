@@ -1,7 +1,7 @@
 import React from 'react';
 import { OutlineButton, Header } from 'styles/Layout';
 
-export const SortControls = ({ onSort, by }) => {
+export const TherapistSortControls = ({ onSort, by }) => {
   const onSortName = () => onSort('name');
   const onSortSpecialty = () => onSort('specialty');
 

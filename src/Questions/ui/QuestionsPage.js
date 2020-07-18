@@ -2,9 +2,9 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-import UnasweredList from 'Questions/ui/UnansweredList';
-import { QuestionCard } from 'Questions/ui/Question';
 import { Header, SubTitle } from 'styles/Layout';
+
+import { QuestionCard, UnansweredList } from 'Questions/ui/dynamicRoutes';
 
 const QuestionListCard = question => <QuestionCard {...question} />;
 
@@ -19,15 +19,15 @@ const QuestionsPage = ({ list, questionnaire, ...props }) => {
   return (
     <>
       <Header>
-        <h1>Paitent Health Questionnaire (PHQ-9)</h1>
+        <h1>
+          Paitent Health Questionnaire <small>(PHQ-9)</small>
+        </h1>
       </Header>
-      {!completed && <UnasweredList unanswered={unanswered} />}
+      {!completed && <UnansweredList unanswered={unanswered} />}
       <SubTitle className="subtitle">{questionnaire.subtitle}</SubTitle>
       <ul className="questions-list">
         {list.map(question => (
-          <li key={question.id}>
-            <QuestionListCard {...question} />
-          </li>
+          <QuestionListCard key={question.id} {...question} />
         ))}
       </ul>
     </>

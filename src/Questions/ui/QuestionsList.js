@@ -1,14 +1,11 @@
 // Component: Questions
 import React, { Component } from 'react';
 
-import { ErrorMessage } from 'styles/Layout';
-import QuestionsPage from 'Questions/ui/QuestionsPage';
-
 import { API_ENDPOINT } from 'Api/api-config';
-import asyncComponent from 'App/ui/withLazy';
-const Spinner = asyncComponent(() =>
-  import(/* webpackChunkName: "Spinner" */ 'Spinner/')
-);
+import { ErrorMessage } from 'styles/Layout';
+
+import { Spinner } from 'App/ui/dynamicRoutes';
+import { QuestionsPage } from 'Questions/ui/dynamicRoutes';
 
 class QuestionsList extends Component {
   state = {};
@@ -33,10 +30,10 @@ class QuestionsList extends Component {
     console.debug('QuestionsList Page', list.length);
 
     return (
-      <div>
+      <>
         {loading ? <Spinner /> : <QuestionsPage list={list} {...this.props} />}
         {error && <ErrorMessage>{error}</ErrorMessage>}
-      </div>
+      </>
     );
   }
 }

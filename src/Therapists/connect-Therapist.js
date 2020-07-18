@@ -4,9 +4,11 @@ import { bindActionCreators } from 'redux';
 
 import { therapistActions } from 'Therapists/actions-Therapists';
 
-import UiTherapistList from 'Therapists/ui/TherapistList';
-import Therapist from 'Therapists/ui/Therapist';
-import { TherapistChosen } from 'Therapists/ui/TherapistChosen';
+import {
+  TherapistChosen,
+  Therapist,
+  TherapistList
+} from 'Therapists/ui/dynamicRoutes';
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -24,7 +26,7 @@ const mapStateToProps = ({ therapists }) => ({
 export const TherapistListConnect = connect(
   mapStateToProps,
   mapDispatchToProps
-)(UiTherapistList);
+)(TherapistList);
 
 export const TherapistChosenConnect = connect(mapStateToProps)(TherapistChosen);
 
