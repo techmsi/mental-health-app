@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { CardImage } from 'Therapists/ui/styles-Therapist';
+import { CardImage, placeHolder } from 'Therapists/ui/styles-Therapist';
 import { ImgObserver } from 'util/ImgObserver';
-
-export const placeHolder =
-  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
 
 export const LazyImage = ({ src, alt }) => {
   const [imageSrc, setImageSrc] = useState(placeHolder);

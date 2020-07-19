@@ -24,6 +24,7 @@ export const MainNavShell = styled.nav`
 `;
 
 export const Header = styled.header`
+  min-width: 13rem;
   nav {
     display: flex;
     justify-content: space-between;

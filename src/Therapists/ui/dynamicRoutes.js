@@ -23,7 +23,9 @@ export const LazyImage = asyncComponent(
 export const TherapistCardImage = asyncComponent(
   () =>
     import(
-      /* webpackChunkName: "TherapistCardImage" */ 'Therapists/ui/TherapistCardImage'
+      /* webpackChunkName: "TherapistCardImage" */
+      /* webpackPreload: true */
+      'Therapists/ui/TherapistCardImage'
     ),
   'TherapistCardImage'
 );
@@ -59,7 +61,11 @@ export const Therapist = asyncComponent(() =>
   import(/* webpackChunkName: "TherapistCardRoute" */ 'Therapists/ui/Therapist')
 );
 export const TherapistList = asyncComponent(() =>
-  import(/* webpackChunkName: "TherapistList" */ 'Therapists/ui/TherapistList')
+  import(
+    /* webpackChunkName: "TherapistList" */
+    /* webpackPreload: true */
+    'Therapists/ui/TherapistList'
+  )
 );
 
 export const TherapistListConnect = asyncComponent(

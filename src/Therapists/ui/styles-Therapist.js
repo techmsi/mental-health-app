@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { media } from 'styles/Responsive';
 import { offwhite, midgray, light } from 'styles/theme';
+export const placeHolder =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
 
 const FlexCol = styled.div`
   display: flex;
@@ -16,6 +18,7 @@ const rowWrap = `
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
+justify-content: flex-start;
 `;
 
 export const CardList = styled.ul`
@@ -48,6 +51,10 @@ export const CardShell = styled.li`
   min-height: 18rem;
   padding: 1rem;
 
+  > * {
+    min-height: 2rem;
+  }
+
   .cityState {
     text-transform: uppercase;
     padding-top: 0.5rem;
@@ -58,17 +65,16 @@ export const CardShell = styled.li`
     position: relative;
     font-size: 1.4rem;
     font-weight: bold;
-    min-height: 2rem;
   }
 
   .email {
     cursor: pointer;
     font-size: 1rem;
-    min-height: 2rem;
   }
   .specialty {
     font-style: italic;
     color: ${midgray};
+    max-width: 15rem;
   }
   .specialty:before {
     content: 'Specialty: ';
@@ -79,6 +85,8 @@ export const CardShell = styled.li`
   img {
     border: 1px solid ${midgray};
     border-radius: 0.25rem;
+    min-height: 10rem;
+    background-image: url(${placeHolder});
   }
 `;
 
@@ -166,12 +174,14 @@ export const DetailGrid = styled(CardShell)`
 `;
 
 export const CardGrid = styled(CardShell)`
+  flex:1;
   .therapist__menu {
     min-height: 4rem;
   }
   ${media.desktop`
   display: grid;
-  max-width: 28rem;
+  min-width:28rem;
+  min-height: 15rem;
   .therapist__menu {
     > * {
       min-width: 6rem;
