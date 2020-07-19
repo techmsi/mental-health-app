@@ -17,6 +17,13 @@ export const createImage = ({ src, id, blob }) => {
   return { src, id, imageBlobUrl };
 };
 
+export const createFont = ({ src, id, blob }) => {
+  const fontBlobUrl = URL.createObjectURL(blob);
+  cacheResource({ src });
+
+  return { src, id, fontBlobUrl };
+};
+
 export const cacheResource = async ({ src }) => {
   const cache = await caches.open('MentalHealthApp');
   cache.add(src);
