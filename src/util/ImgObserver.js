@@ -1,5 +1,5 @@
 import ImageLoaderWorker from 'worker/imageLoad/host';
-import { getCachedImage } from 'worker/imageLoad/loadImages';
+import { getCachedResource } from 'worker/imageLoad/loadImages';
 
 const observerOptions = {
   threshold: 0.01,
@@ -18,7 +18,7 @@ export const ImgObserver = (didCancel, src, setImageSrc) => {
       // when image is visible in the viewport + rootMargin
       if (!didCancel && inViewport) {
         ImageLoaderWorker.addEventListener('message', () => {
-          getCachedImage(src).then(image => {
+          getCachedResource(src).then(image => {
             cachedImage = image;
           });
         });

@@ -6,30 +6,12 @@ export const getImageBlob = async ({ name, src }) => {
   return fileBlob;
 };
 
-export const loadImages = imageElement => {
-  return createImage(imageElement);
-};
-
-export const createImage = ({ src, id, blob }) => {
-  const imageBlobUrl = URL.createObjectURL(blob);
-  cacheResource({ src });
-
-  return { src, id, imageBlobUrl };
-};
-
-export const createFont = ({ src, id, blob }) => {
-  const fontBlobUrl = URL.createObjectURL(blob);
-  cacheResource({ src });
-
-  return { src, id, fontBlobUrl };
-};
-
 export const cacheResource = async ({ src }) => {
   const cache = await caches.open('MentalHealthApp');
   cache.add(src);
 };
 
-export const getCachedImage = async src => {
+export const getCachedResource = async src => {
   const cache = await caches.open('MentalHealthApp');
   const cachedImageFound = await cache.match(src);
 

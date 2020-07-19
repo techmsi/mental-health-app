@@ -37,8 +37,8 @@ export const LazyImage = ({ src, alt }) => {
 
   return (
     <CardImage ref={setImageRef}>
-      <source srcSet={imageSrc.replace('.jpg', '.webp')} type='image/webp' />
-      <img src={imageSrc} alt={alt} />
+      <source srcSet={`${imageSrc}.webp`} type='image/webp' />
+      <img src={`${imageSrc}.jpg`} alt={alt} />
     </CardImage>
   );
 };

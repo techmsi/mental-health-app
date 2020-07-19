@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-const { getImageBlob, createImage } = require('./loadImages');
+const { getImageBlob, cacheResource } = require('./loadImages');
 
 self.onmessage = function ({ data }) {
   if (!data) return null;
@@ -15,11 +15,17 @@ self.onmessage = function ({ data }) {
     console.log(`Worker creating image blob for ${name}`);
     blobRequests.forEach(blobRequest => {
       getImageBlob(blobRequest).then(blob => {
-        const image = createImage({
+        const imageBlobUrl = URL.createObjectURL(blob);
+
+        const image = {
           src: blobRequest.src,
           id: blobRequest.name,
-          blob
-        });
+          blob,
+          blobUrl: imageBlobUrl
+        };
+
+        cacheResource({ src: blobRequest.src });
+
         self.postMessage(image);
       });
     });
