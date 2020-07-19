@@ -2,6 +2,7 @@ import 'preact/debug';
 import React from 'react';
 import { render, hydrate } from 'react-dom';
 
+import 'worker/fontLoad/host';
 import 'worker/imageLoad/host';
 import * as serviceWorker from 'worker/serviceWorker';
 import { Application } from 'App/ui/Application';
