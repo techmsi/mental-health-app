@@ -1,7 +1,8 @@
 /* eslint-disable no-restricted-globals */
-const { getImageBlob, cacheResource } = require('./loadImages');
+const { getImageBlob } = require('./loadImages');
+const { cacheResource } = require('./cacheResource');
 
-self.onmessage = function ({ data }) {
+self.onmessage = function({ data }) {
   if (!data) return null;
   console.time('worker image creation');
   const { imagesArray } = data;

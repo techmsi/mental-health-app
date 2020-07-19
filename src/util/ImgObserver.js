@@ -1,5 +1,5 @@
 import ImageLoaderWorker from 'worker/imageLoad/host';
-import { getCachedResource } from 'worker/imageLoad/loadImages';
+import { getCachedResource } from 'worker/imageLoad/cacheResource';
 
 const observerOptions = {
   threshold: 0.01,

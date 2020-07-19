@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-globals */
-const { getImageBlob, cacheResource } = require('../imageLoad/loadImages');
+const { getImageBlob } = require('../imageLoad/loadImages');
+const { cacheResource } = require('../imageLoad/cacheResource');
 
 self.addEventListener('message', async ({ data }) => {
   console.log(data.type);

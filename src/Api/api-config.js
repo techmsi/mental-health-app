@@ -1,5 +1,6 @@
 let backendHost;
-const hostname = window && window.location && window.location.hostname;
+// eslint-disable-next-line no-restricted-globals
+const hostname = location && location.hostname;
 const imageBaseUrl =
   'https://raw.githubusercontent.com/techmsi/mental-health-app/master/public';
 if (hostname.includes('localhost')) {
