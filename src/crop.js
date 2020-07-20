@@ -10,15 +10,20 @@ const square = () => {
     );
 
     headshots.forEach(imageFile => {
-      const imageFileName = `${imageFile.replace('.jpg', '')}_200.jpg`;
+      const squareImageFileName = `${imageFile.replace('.jpg', '')}_200.jpg`;
       const fullImagePath = join(headshotsFolder, imageFile);
-      const fullImageFileName = join(headshotsFolder, imageFileName);
+      const fullImageFileName = join(headshotsFolder, imageFile);
 
       sharp(fullImagePath)
-        .resize(200, 200)
+        .resize(400, 500)
         .toFile(fullImageFileName, (err, info) => {
           if (err) return;
-          console.log(`${imageFileName}`, info.size);
+          console.log(`${imageFile}`, info.size);
+        })
+        .resize(200, 200)
+        .toFile(join(headshotsFolder, squareImageFileName), (err, info) => {
+          if (err) return;
+          console.log(`${squareImageFileName}`, info.size);
         });
     });
   } catch (error) {
