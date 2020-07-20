@@ -1,7 +1,7 @@
 // Log: Supress console.debug && console.debug statements in Production
 
 export default class Log {
-  constructor(siteUrl) {
+  constructor (siteUrl) {
     // eslint-disable-next-line no-restricted-globals
     this.debug = location.host === siteUrl;
 

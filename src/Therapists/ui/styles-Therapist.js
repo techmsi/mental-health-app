@@ -14,23 +14,17 @@ export const CardWrapper = styled(FlexCol)`
   padding: 1rem;
 `;
 
-const rowWrap = `
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: flex-start;
+const simpleGrid = (minItemSize = 18) => `
+display: grid;
+column-gap: 1rem;
+grid-template-columns: repeat(auto-fill, minmax(${minItemSize}rem, 1fr));
 `;
 
 export const CardList = styled.ul`
   counter-reset: section;
-  ${media.desktop`
-    ${rowWrap}
-    justify-content: flex-start;
-    > * {
-      flex: 1 1 33%;
-      max-width: 35rem;
-    }
-  `}
+  ${simpleGrid(18)}
+  ${media.tablet`${simpleGrid(24)}`}
+  ${media.desktop`${simpleGrid(28)}`}
   .therapist-item {
     .name:before {
       display: inline-block;
@@ -85,8 +79,6 @@ export const CardShell = styled.li`
   img {
     border: 1px solid ${midgray};
     border-radius: 0.25rem;
-    min-height: 10rem;
-    background-image: url(${placeHolder});
   }
 `;
 
@@ -96,23 +88,43 @@ const squareImage = `
     height: 10rem;
     background-position:center;
     border-radius: 0.4rem;
-    margin-left: 1rem;
+    min-width: 10rem;
     min-height: 10rem;
 `;
 
 const squareImageMobile = `
-    object-fit: contain;
-    min-height: 20rem;
+  object-fit: cover;
+  max-width: 100%;
+  min-height: 30rem;
+  max-height: 40rem;
 `;
 
 export const CardImage = styled.picture`
   ${media.phone`${squareImageMobile}`}
   ${media.tablet`${squareImage}`}
   ${media.desktop`${squareImage}`}
+ 
+  @keyframes loaded {
+    0% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+ img {
+    color: ${offwhite};
+    font-size:1.6rem;
+    text-align: center;
+    // util class v.s. props -> avoids style regeneration
+    &.loaded {
+      animation: loaded 300ms ease-in-out;
+    }
+  }
 `;
 
 const gridAreas = `
-  picture {
+  .headshot {
     grid-area: headshot;
   }
   .cityState {
@@ -162,7 +174,7 @@ export const DetailGrid = styled(CardShell)`
   .bio {
     padding: 1rem 1.5rem;
     > * {
-      margin-bottom: 1rem;
+      padding-bottom: 1rem;
     }
   }
   img {
@@ -180,7 +192,7 @@ export const CardGrid = styled(CardShell)`
   }
   ${media.desktop`
   display: grid;
-  min-width:28rem;
+  min-width: 28rem;
   min-height: 15rem;
   .therapist__menu {
     > * {

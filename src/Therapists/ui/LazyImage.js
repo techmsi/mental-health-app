@@ -2,29 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { CardImage, placeHolder } from 'Therapists/ui/styles-Therapist';
 import { ImgObserver } from 'util/ImgObserver';
 
+const onLoad = event => {
+  event.target.classList.add('loaded');
+};
+
+const onError = event => {
+  event.target.classList.add('error');
+};
+
 export const LazyImage = ({ src, alt }) => {
   const [imageSrc, setImageSrc] = useState(placeHolder);
+  const [imageSrcFallback, setImageSrcFallback] = useState(placeHolder);
   const [imageRef, setImageRef] = useState();
 
   useEffect(() => {
     let observer;
-    let fromCacheImage;
     let didCancel = false;
 
     if (imageRef && imageSrc === placeHolder) {
-      if (IntersectionObserver) {
-        const { imageObserver, cachedImage } = ImgObserver(
-          didCancel,
-          src,
-          setImageSrc
-        );
-        observer = imageObserver;
-        fromCacheImage = cachedImage;
-        observer.observe(imageRef);
-      } else {
-        // Old browsers fallback
-        setImageSrc(fromCacheImage || src);
-      }
+      const { imageObserver } = ImgObserver(
+        didCancel,
+        src,
+        setImageSrc,
+        setImageSrcFallback
+      );
+      observer = imageObserver;
+      observer.observe(imageRef);
     }
     return () => {
       didCancel = true;
@@ -33,12 +36,18 @@ export const LazyImage = ({ src, alt }) => {
         observer.unobserve(imageRef);
       }
     };
-  }, [imageRef, imageSrc, src]);
+  }, [imageRef, imageSrc, imageSrcFallback, src]);
 
   return (
-    <CardImage ref={setImageRef}>
-      <source srcSet={`${imageSrc}.webp`} type='image/webp' />
-      <img src={`${imageSrc}.jpg`} alt={alt} />
+    <CardImage className='headshot'>
+      <source srcSet={imageSrc} type='image/webp' />
+      <img
+        ref={setImageRef}
+        src={imageSrcFallback}
+        alt={alt}
+        onLoad={onLoad}
+        onError={onError}
+      />
     </CardImage>
   );
 };

@@ -60,6 +60,13 @@ export const TherapistChosen = asyncComponent(
 export const Therapist = asyncComponent(() =>
   import(/* webpackChunkName: "TherapistCardRoute" */ 'Therapists/ui/Therapist')
 );
+export const TherapistsPage = asyncComponent(() =>
+  import(
+    /* webpackChunkName: "TherapistsPage" */
+    /* webpackPreload: true */
+    'Therapists/ui/TherapistsPage'
+  )
+);
 export const TherapistList = asyncComponent(() =>
   import(
     /* webpackChunkName: "TherapistList" */

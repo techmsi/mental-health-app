@@ -5,11 +5,11 @@ let FetchLoaderWorker = new Worker();
 const logName = 'FetchLoaderWorker';
 const logStyle = 'color:chartreuse';
 
-FetchLoaderWorker.addEventListener('message', function(event) {
+FetchLoaderWorker.addEventListener('message', function (event) {
   console.log(`%csuccess ${logName}:`, logStyle);
 });
 
-FetchLoaderWorker.addEventListener('error', function(event) {
+FetchLoaderWorker.addEventListener('error', function (event) {
   console.error(`error ${logName}:`, event);
 });
 

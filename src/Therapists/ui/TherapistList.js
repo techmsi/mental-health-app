@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { sortByKey } from 'util/helpers';
 
 import { ErrorMessage } from 'styles/Layout';
-import TherapistsPage from 'Therapists/ui/TherapistsPage';
+import { TherapistsPage } from 'Therapists/ui/dynamicRoutes';
 
 import { API_ENDPOINT } from 'Api/api-config';
 import { Spinner } from 'App/ui/dynamicRoutes';
