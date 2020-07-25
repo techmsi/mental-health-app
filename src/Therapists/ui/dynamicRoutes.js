@@ -2,7 +2,9 @@ import asyncComponent from 'App/ui/asyncComponent';
 export const TherapistSortControls = asyncComponent(
   () =>
     import(
-      /* webpackChunkName: "TherapistSortControls" */ 'Therapists/ui/TherapistSortControls'
+      /* webpackChunkName: "TherapistSortControls" */
+      /* webpackMode: "eager" */
+      'Therapists/ui/TherapistSortControls'
     ),
   'TherapistSortControls'
 );
@@ -46,7 +48,8 @@ export const TherapistCardSummary = asyncComponent(
 export const TherapistMenu = asyncComponent(
   () =>
     import(
-      /* webpackChunkName: "TherapistMenu" */ 'Therapists/ui/TherapistMenu'
+      /* webpackChunkName: "TherapistMenu" */
+      'Therapists/ui/TherapistMenu'
     ),
   'TherapistMenu'
 );
@@ -70,6 +73,7 @@ export const TherapistsPage = asyncComponent(() =>
 export const TherapistList = asyncComponent(() =>
   import(
     /* webpackChunkName: "TherapistList" */
+    /* webpackPrefetch: true */
     /* webpackPreload: true */
     'Therapists/ui/TherapistList'
   )
@@ -94,7 +98,10 @@ export const TherapistChosenConnect = asyncComponent(
 export const TherapistConnect = asyncComponent(
   () =>
     import(
-      /* webpackChunkName: "TherapistConnect" */ 'Therapists/connect-Therapist'
+      /* webpackChunkName: "TherapistConnect" */
+      /* webpackPrefetch: true */
+      /* webpackPreload: true */
+      'Therapists/connect-Therapist'
     ),
   'TherapistConnect'
 );
