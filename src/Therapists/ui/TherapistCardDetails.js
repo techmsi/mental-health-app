@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Heading } from 'styles/Layout';
 import { CardShell, DetailGrid } from 'Therapists/ui/styles-Therapist';
 import {
   TherapistCardImage,
@@ -13,7 +14,7 @@ export const TherapistCardDetails = therapist => (
     id={`therapist-details-${therapist.id}`}
     className='therapist'
   >
-    <h2 className='header'>Therapists Details</h2>
+    <Heading className='header'>Therapists Details</Heading>
     <TherapistCardSummary {...therapist} />
     <TherapistCardImage
       lazy={false}
