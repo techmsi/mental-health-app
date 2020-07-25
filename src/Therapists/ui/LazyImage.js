@@ -10,9 +10,11 @@ const onError = event => {
   event.target.classList.add('error');
 };
 
-export const LazyImage = ({ src, alt }) => {
-  const [imageSrc, setImageSrc] = useState(placeHolder);
-  const [imageSrcFallback, setImageSrcFallback] = useState(placeHolder);
+export const LazyImage = ({ src, alt, lazy }) => {
+  const [imageSrc, setImageSrc] = useState(lazy ? placeHolder : `${src}.webp`);
+  const [imageSrcFallback, setImageSrcFallback] = useState(
+    lazy ? placeHolder : `${src}.jpg`
+  );
   const [imageRef, setImageRef] = useState();
 
   useEffect(() => {
@@ -36,7 +38,7 @@ export const LazyImage = ({ src, alt }) => {
         observer.unobserve(imageRef);
       }
     };
-  }, [imageRef, imageSrc, imageSrcFallback, src]);
+  }, [imageRef, imageSrc, imageSrcFallback, lazy, src]);
 
   return (
     <CardImage className='headshot'>

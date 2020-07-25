@@ -5,13 +5,11 @@ import { LazyImage } from 'Therapists/ui/dynamicRoutes';
 export const TherapistCardImage = ({
   image,
   name,
+  lazy,
   baseUrl = API_ENDPOINT.imageBaseUrl
 }) => {
-  return image ? (
-    <LazyImage
-      src={`${baseUrl}/images/headshots/${image}`}
-      alt={`headshot for ${name}`}
-      loading='lazy'
-    />
-  ) : null;
+  const src = `${baseUrl}/images/headshots/${image}`;
+  const alt = `headshot for ${name}`;
+
+  return image ? <LazyImage src={src} alt={alt} lazy={lazy} /> : null;
 };

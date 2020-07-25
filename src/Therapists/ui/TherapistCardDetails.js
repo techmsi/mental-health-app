@@ -15,7 +15,11 @@ export const TherapistCardDetails = therapist => (
   >
     <h2 className='header'>Therapists Details</h2>
     <TherapistCardSummary {...therapist} />
-    <TherapistCardImage image={therapist.image} name={therapist.name} />
+    <TherapistCardImage
+      lazy={false}
+      image={therapist.image}
+      name={therapist.name}
+    />
     <TherapistBio />
   </CardShell>
 );

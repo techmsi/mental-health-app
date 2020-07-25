@@ -19,7 +19,7 @@ export const TherapistChosen = ({
   return (
     <ThankYouShell className='therapists__thanks'>
       Thank you for choosing a therapist.
-      <TherapistCardImage image={image} name={name} />
+      <TherapistCardImage lazy={false} image={image} name={name} />
       <span className='name'>{name}</span> will be contacted on your behalf.
     </ThankYouShell>
   );

@@ -1,8 +1,8 @@
 let backendHost;
 // eslint-disable-next-line no-restricted-globals
 const hostname = location && location.hostname;
-const imageBaseUrl =
-  'https://raw.githubusercontent.com/techmsi/mental-health-app/master/public';
+let imageBaseUrl = 'https://phq9.netlify.app';
+
 if (hostname.includes('localhost')) {
   backendHost = 'http://localhost:9000/api';
 } else {

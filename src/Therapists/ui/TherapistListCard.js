@@ -8,10 +8,14 @@ import {
   TherapistCardSummary
 } from 'Therapists/ui/dynamicRoutes';
 
-export const TherapistListCard = therapist => (
+export const TherapistListCard = (therapist, index) => (
   <CardShell as={CardGrid} key={therapist.id} className='therapist-item'>
     <TherapistMenu therapistId={therapist.id} />
-    <TherapistCardImage image={therapist.image} name={therapist.name} />
+    <TherapistCardImage
+      lazy={index > 0}
+      image={therapist.image}
+      name={therapist.name}
+    />
     <TherapistCardSummary {...therapist} />
   </CardShell>
 );
