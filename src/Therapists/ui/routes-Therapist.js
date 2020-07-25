@@ -2,7 +2,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import { CardWrapper } from 'Therapists/ui/styles-Therapist';
 import {
   TherapistChosenConnect,
   TherapistConnect,
@@ -13,7 +12,7 @@ const TherapistRoutes = ({ match, ...props }) => {
   console.debug('Therapist Route props', props);
 
   return (
-    <CardWrapper>
+    <>
       <Route
         exact
         path={match.url + '/list'}
@@ -30,7 +29,7 @@ const TherapistRoutes = ({ match, ...props }) => {
         path={match.url + '/:therapistId/contacted'}
         component={TherapistChosenConnect}
       />
-    </CardWrapper>
+    </>
   );
 };
 

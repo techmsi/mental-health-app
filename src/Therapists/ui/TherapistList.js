@@ -49,14 +49,14 @@ class TherapistList extends Component {
     console.debug('TherapistList Page', list.length);
 
     return (
-      <div>
+      <>
         {loading ? (
           <Spinner />
         ) : (
           <TherapistsPage list={list} onSort={this.sort} by={sortBy} />
         )}
         {error && <ErrorMessage>{error}</ErrorMessage>}
-      </div>
+      </>
     );
   }
 }
