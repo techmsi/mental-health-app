@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { media } from 'styles/Responsive';
 import theme from 'styles/theme.json';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const centered = `
     display: flex;
@@ -9,7 +9,7 @@ const centered = `
     align-items: center;
     `;
 
-const headerMinHeight = `min-height: 3.5rem;`;
+// const headerMinHeight = `min-height: 3.5rem;`;
 export const Page = styled.section`
   display: flex;
   flex-direction: column;
@@ -18,7 +18,15 @@ export const Page = styled.section`
     margin: 0.25rem 0;
   }
 `;
-
+export const NavShell = styled.nav`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 3rem;
+  text-align: center;
+  place-items: center;
+  ${media.tablet`grid-column-gap: 1rem; height: 2.5rem;`}
+  ${media.desktop`grid-column-gap: 1rem`}
+`;
 export const MainNavShell = styled.nav`
   border-bottom: 1px solid ${theme.medium};
 `;
@@ -29,24 +37,10 @@ export const Header = styled.header`
     display: flex;
     justify-content: space-between;
   }
-  h1 {
-    text-align: center;
-    font-size: 1.8rem;
-    ${headerMinHeight}
-    small {
-      font-size: 1.6rem;
-    }
-  }
-  h2 {
-    font-size: 1.6rem;
-    ${headerMinHeight}
-  }
-  h3 {
-    font-size: 1.4rem;
-    ${headerMinHeight}
-  }
 `;
-
+export const Heading = styled.h2`
+  height: 3.5rem;
+`;
 export const SubTitle = styled.p`
   font-size: 1.4rem;
   padding: 1rem;
@@ -85,6 +79,22 @@ export const OutlineButton = styled(BasicButton)`
 `;
 export const LightButton = styled(OutlineButton)`
   background-color: ${theme.lighter};
+`;
+
+export const LightButtonLink = styled(Link)`
+ ${buttonMinHeightWidthMobile}
+  
+  ${media.tablet`${buttonMinHeightWidth}  border-radius: 0.25rem;`}
+  ${media.desktop`${buttonMinHeightWidth}  border-radius: 0.25rem;`}
+  transition: color 0.25s ease-in-out;
+  ${media.tablet`border-radius: 0.25rem;`}
+  ${media.desktop`border-radius: 0.25rem;`}
+
+  background-color: ${theme.lighter};
+  border: 1px solid ${theme.medium};
+  color: ${theme.black};
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
 `;
 
 export const DarkButtonLink = styled(NavLink)`
