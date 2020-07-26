@@ -13,7 +13,7 @@ const TherapistsPage = ({ list, onSort, by }) => {
       <Header>
         <Heading as='h1'>Certified Therapists</Heading>
         <TherapistSortControls onSort={onSort} by={by} />
-        <Heading>Book an Appointment</Heading>
+        <Heading>Book Your Appointment</Heading>
       </Header>
       <CardList className='therapists-list'>
         {list && list.map(TherapistListCard)}

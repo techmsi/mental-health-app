@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Heading } from 'styles/Layout';
-import { CardShell, DetailGrid } from 'Therapists/ui/styles-Therapist';
+import { DetailGrid } from 'Therapists/ui/styles-Therapist';
 import {
   TherapistCardImage,
   TherapistBio,
@@ -9,12 +9,10 @@ import {
 } from 'Therapists/ui/dynamicRoutes';
 
 export const TherapistCardDetails = therapist => (
-  <CardShell
-    as={DetailGrid}
-    id={`therapist-details-${therapist.id}`}
-    className='therapist'
-  >
-    <Heading className='header'>Therapists Details</Heading>
+  <DetailGrid id={`therapist-details-${therapist.id}`} className='therapist'>
+    <Heading as='h1' className='header'>
+      Therapists Details
+    </Heading>
     <TherapistCardSummary {...therapist} />
     <TherapistCardImage
       lazy={false}
@@ -22,5 +20,5 @@ export const TherapistCardDetails = therapist => (
       name={therapist.name}
     />
     <TherapistBio />
-  </CardShell>
+  </DetailGrid>
 );

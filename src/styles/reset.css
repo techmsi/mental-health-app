@@ -3,12 +3,9 @@ body,
 #root {
   height: 100%;
 }
+
 body {
   width: 100%;
-}
-img {
-  /* max-width: calc(100% -0); */
-  /* width: 100%; */
 }
 a {
   text-decoration: none;

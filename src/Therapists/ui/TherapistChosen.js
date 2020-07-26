@@ -1,5 +1,6 @@
 import React from 'react';
 import { findById } from 'util/helpers';
+import { Heading } from 'styles/Layout';
 import { ThankYouShell } from 'Therapists/ui/styles-Therapist';
 
 import { TherapistCardImage } from 'Therapists/ui/dynamicRoutes';
@@ -18,9 +19,10 @@ export const TherapistChosen = ({
 
   return (
     <ThankYouShell className='therapists__thanks'>
-      Thank you for choosing a therapist.
+      <Heading as='h1'>Chosen Therapist</Heading>
+      <p>Thank you for choosing a therapist.</p>
       <TherapistCardImage lazy={false} image={image} name={name} />
-      <span className='name'>{name}</span> will be contacted on your behalf.
+      <Heading>{name}</Heading> will be contacted on your behalf.
     </ThankYouShell>
   );
 };
