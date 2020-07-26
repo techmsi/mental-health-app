@@ -7,8 +7,6 @@ import 'worker/imageLoad/host';
 import * as serviceWorker from 'worker/serviceWorker';
 import { Application } from 'App/ui/Application';
 
-import 'styles/reset.css';
-
 const debugOff = process.env.NODE_ENV === 'production';
 if (debugOff) {
   console.debug(process.env.NODE_ENV);
