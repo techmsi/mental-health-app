@@ -14,8 +14,6 @@ const routeSubpath = ({ pathname }) => {
 };
 
 class TherapistList extends Component {
-  state = { sortBy: '' };
-
   componentDidMount() {
     const { list } = this.props.therapists;
     const isLoaded = list && list.length > 0;
@@ -39,11 +37,10 @@ class TherapistList extends Component {
     console.debug('Sort by', field);
     const { list } = this.props.therapists;
 
-    this.setState({ list: sortByKey(list, field), sortBy: field });
+    this.setState({ list: sortByKey(list, field) });
   };
 
   render() {
-    const { sortBy } = this.state;
     const { loading, error, list = [] } = this.props.therapists;
 
     console.debug('TherapistList Page', list.length);
@@ -53,7 +50,7 @@ class TherapistList extends Component {
         {loading ? (
           <Spinner />
         ) : (
-          <TherapistsPage list={list} onSort={this.sort} by={sortBy} />
+          <TherapistsPage list={list} onSort={this.sort} />
         )}
         {error && <ErrorMessage>{error}</ErrorMessage>}
       </>

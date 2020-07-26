@@ -30,7 +30,8 @@ export const CardList = styled.ul`
     }
   }
 `;
-export const CardShell = styled.li`
+
+const CardShell = styled.li`
   padding: 1rem;
   ${media.tablet`height: 22rem;`}
   ${media.desktop`height: 22rem;`}
@@ -111,7 +112,8 @@ const listingGridAreas = `
     'headshot specialty'
     'headshot email';
 `;
-export const CardGrid = styled(CardShell)`
+
+const CardGrid = styled(CardShell)`
   display: grid;
   overflow: hidden;
   ${media.tablet`${gridAreas} ${listingGridAreas}column-gap:3rem;grid-template-columns: 0.25fr 1fr;  grid-template-rows: repeat(auto-fill, .5fr);`}

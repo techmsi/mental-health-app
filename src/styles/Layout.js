@@ -52,9 +52,6 @@ const BasicButton = styled.button`
 export const OutlineButton = styled(BasicButton)`
   border: 1px solid ${theme.medium};
 `;
-export const LightButton = styled(OutlineButton)`
-  background-color: ${theme.lighter};
-`;
 
 export const LightButtonLink = styled(Link)`
   padding: 1rem;
