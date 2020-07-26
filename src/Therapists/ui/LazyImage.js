@@ -11,10 +11,11 @@ const onError = event => {
 };
 
 export const LazyImage = ({ src, alt, lazy }) => {
-  const [imageSrc, setImageSrc] = useState(lazy ? placeHolder : `${src}.webp`);
-  const [imageSrcFallback, setImageSrcFallback] = useState(
-    lazy ? placeHolder : `${src}.jpg`
-  );
+  // const initalSrc = lazy ? placeHolder : `${src}.jpg`;
+  // const initalSrcFallback = lazy ? placeHolder : `${src}.jpg`;
+
+  const [imageSrc, setImageSrc] = useState(placeHolder);
+  const [imageSrcFallback, setImageSrcFallback] = useState(placeHolder);
   const [imageRef, setImageRef] = useState();
 
   useEffect(() => {
