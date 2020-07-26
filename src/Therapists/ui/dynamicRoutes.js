@@ -82,7 +82,9 @@ export const TherapistList = asyncComponent(() =>
 export const TherapistListConnect = asyncComponent(
   () =>
     import(
-      /* webpackChunkName: "TherapistListConnect" */ 'Therapists/connect-Therapist'
+      /* webpackChunkName: "TherapistListConnect" */
+      /* webpackMode: 'eager' */
+      'Therapists/connect-Therapist'
     ),
   'TherapistListConnect'
 );
@@ -90,7 +92,9 @@ export const TherapistListConnect = asyncComponent(
 export const TherapistChosenConnect = asyncComponent(
   () =>
     import(
-      /* webpackChunkName: "TherapistChosenConnect" */ 'Therapists/connect-Therapist'
+      /* webpackChunkName: "TherapistChosenConnect" */
+      /* webpackMode: 'eager' */
+      'Therapists/connect-Therapist'
     ),
   'TherapistChosenConnect'
 );
@@ -101,6 +105,7 @@ export const TherapistConnect = asyncComponent(
       /* webpackChunkName: "TherapistConnect" */
       /* webpackPrefetch: true */
       /* webpackPreload: true */
+      /* webpackMode: 'eager' */
       'Therapists/connect-Therapist'
     ),
   'TherapistConnect'
