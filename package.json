@@ -11,7 +11,7 @@
   "author": "techmsi",
   "license": "ISC",
   "dependencies": {
-    "babel-plugin-styled-components": "^1.10.7",
+    "babel-plugin-styled-components": "*",
     "preact": "^10.x.x",
     "preact-compat": "^3.x.x",
     "react": "*",
