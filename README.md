@@ -1,6 +1,6 @@
 # mental-health-app
 
-Prototype for mental health web-app using Patient Health Questionnaire (PHQ-9)
+Prototype for mental health web-app using Patient Health Questionnaire (PHQ-9).
 
 ### Disclaimer
 
