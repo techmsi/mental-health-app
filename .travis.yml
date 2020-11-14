@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - 10
+before_install:
+  - npm install -g @lhci/cli
+script:
+  - npm run build
+  - lhci autorun --rc-overrides.upload.target=temporary-public-storage
+addons:
+  chrome: stable
