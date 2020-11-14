@@ -5,6 +5,7 @@ before_install:
   - npm install -g @lhci/cli
 script:
   - npm run build
+  after_success:
   - lhci autorun --rc-overrides.upload.target=temporary-public-storage
 addons:
   chrome: stable
