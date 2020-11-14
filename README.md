@@ -1,6 +1,6 @@
 # mental-health-app
 
-Prototype for mental health web-app using Patient Health Questionnaire (PHQ-9)
+Prototype for mental health web-app using Patient Health Questionnaire (PHQ-9).
 
 ### Disclaimer
 
@@ -37,6 +37,7 @@ Go to http://localhost:3001
 - Styling: styled-components
 - Transpiler & Bundler: webpack + babel
 - Backend: serverless function (see mental-health-api)
+- Performance: Lighthouse
 
 ### Screenshots
 
