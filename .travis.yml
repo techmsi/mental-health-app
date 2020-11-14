@@ -6,6 +6,6 @@ before_install:
 script:
   - npm run build
   after_success:
-  - lhci autorun --rc-overrides.upload.target=temporary-public-storage
+  - lhci autorun
 addons:
   chrome: stable
