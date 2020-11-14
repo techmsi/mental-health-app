@@ -3,6 +3,8 @@ node_js:
   - stable
 addons:
   chrome: stable
+git:
+  lfs_skip_smudge: true
 before_install:
   - npm install -g @lhci/cli
 script:
