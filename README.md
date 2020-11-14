@@ -37,6 +37,7 @@ Go to http://localhost:3001
 - Styling: styled-components
 - Transpiler & Bundler: webpack + babel
 - Backend: serverless function (see mental-health-api)
+- CI: Travis
 
 ### Screenshots
 
