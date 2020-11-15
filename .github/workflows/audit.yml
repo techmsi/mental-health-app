@@ -1,27 +1,15 @@
 name: Performance Audit
-
-on: [pull_request]
-
+on: 
+  push:
+    branches:
+    - master
 jobs:
-  build:
+  lighthouse:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
-      - name: Install
-        run: |
-          npm ci
-      - name: Build
-        run: |
-          npm run build
-      - name: Run Lighthouse CI
-        run: |
-          npm install -g @lhci/cli@0.6.x
-          lhci autorun
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v2
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       - name: Save results
@@ -29,3 +17,4 @@ jobs:
         with:
           name: lighthouse-results
           path: '.lighthouseci'
+          configPath: '../../lighthouserc.json'
