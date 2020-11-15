@@ -1,15 +1,36 @@
 name: Performance Audit
-on: [push, pull_request]
+
+on: [pull_request]
 
 jobs:
-  audit:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Audit Netlify deploy preview
-      uses: jakejarvis/lighthouse-action@master
-      with:
-        entryPoint: 'https://phq9.netlify.app'
-    - uses: actions/upload-artifact@master
-      with:
-        name: report
-        path: './report'
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install
+        run: |
+          npm ci
+      - name: Build
+        run: |
+          npm run build
+      - name: Waiting for 200 from the Netlify Preview
+        uses: josephduffy/wait-for-netlify-action@v1
+        id: wait-for-netflify-preview
+        with:
+          site_name: "phq9"
+      - name: Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.6.x
+          lhci autorun --upload.target=temporary-public-storage --collect.url=${{ steps.wait-for-netflify-preview.outputs.url }} || echo "LHCI failed!"
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      - name: Save Lighthouse CI Results
+        uses: actions/upload-artifact@master
+        with:
+          name: report
+          path: './report'
