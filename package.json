@@ -1,7 +1,7 @@
 {
   "name": "mental-health-app",
   "version": "1.0.0",
-  "description": "Prototype for a mental health app using redux",
+  "description": "Prototype for a mental health app using redux, sagas, workers, & preact",
   "main": "src/index.js",
   "module": "./src/index.js",
   "keywords": [
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "babel-plugin-styled-components": "*",
+    "husky": "^5.1.1",
     "preact": "^10.x.x",
     "preact-compat": "^3.x.x",
     "react": "*",
@@ -26,11 +27,15 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "*",
+    "@commitlint/cli": "*",
+    "@commitlint/config-conventional": "*",
     "chunk-manifest-webpack-plugin": "*",
+    "commitizen": "*",
     "customize-cra": "*",
-    "husky": "*",
     "lighthouse": "*",
+    "lint-staged": "*",
     "madge": "*",
+    "prettier": "*",
     "prettier-semistandard": "*",
     "react-app-rewired": "*",
     "react-test-renderer": "*",
@@ -39,9 +44,10 @@
     "webpack-bundle-analyzer": "*",
     "webpack-chunk-hash": "*",
     "webpackbar": "*",
-    "worker-loader": "^2.0.0"
+    "worker-loader": "*"
   },
   "scripts": {
+    "cz": "git-cz",
     "crop": "node ./src/crop",
     "toWebP": "for file in ./public/images/headshots/*; do cwebp \"$file\" -o \"${file%.*}.webp\"; done",
     "mimicprod": "yarn build; cd build; ws --http2;",
@@ -72,9 +78,18 @@
       "last 1 safari version"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn format"
+  "lint-staged": {
+    "*.js": "eslint --fix",
+    "*.{js,css,md}": "prettier --write"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }
