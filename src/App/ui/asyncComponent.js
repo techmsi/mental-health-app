@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
-export default function asyncComponent(importComponent, name = null) {
+function asyncComponent(importComponent, name = null) {
   class AsyncComponent extends Component {
     _isMounted = false;
     state = {
-      component: null
+      component: null,
     };
 
     async componentDidMount() {
@@ -33,3 +33,5 @@ export default function asyncComponent(importComponent, name = null) {
 
   return AsyncComponent;
 }
+
+export default asyncComponent;

@@ -1,9 +1,8 @@
-import React from 'react';
 import { Route } from 'react-router-dom';
 
 import {
   QuestionsListConnect,
-  QuestionConnect
+  QuestionConnect,
 } from 'Questions/connect-Questions';
 
 // & Detail

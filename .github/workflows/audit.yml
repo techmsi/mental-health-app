@@ -5,15 +5,19 @@ on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        node: ['12', '14']
+    name: Node ${{ matrix.node }} sample
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: ${{ matrix.node }}
       - name: Install
         run: |
+          node -v
           npm ci
       - name: Build
         run: |
@@ -22,12 +26,21 @@ jobs:
         uses: josephduffy/wait-for-netlify-action@v1
         id: wait-for-netflify-preview
         with:
-          site_name: "phq9"
+          site_name: 'phq9'
       - name: Lighthouse CI
         run: |
-          npm install -g @lhci/cli@0.6.x
-          lhci autorun --upload.target=temporary-public-storage --collect.url=${{ steps.wait-for-netflify-preview.outputs.url }} || echo "LHCI failed!"
+          npm install -g @lhci/cli@0.7.x
+          lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"
+        with:
+          urls: |
+            $DEPLOY_URL/
+            $DEPLOY_URL/questionnaire
+            $DEPLOY_URL/therapists/list
+            $DEPLOY_URL/therapists/1/details
+          runs: 1
+          budgetPath: ./perf/budget.json
         env:
+          DEPLOY_URL: ${{ steps.wait-for-netflify-preview.outputs.url }}
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       - name: Save results
         uses: actions/upload-artifact@master

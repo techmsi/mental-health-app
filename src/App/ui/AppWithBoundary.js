@@ -1,9 +1,8 @@
-import React from 'react';
+import { Suspense } from 'react';
+
 import ErrorBoundary from 'App/ui/ErrorBoundary';
 export const AppWithBoundary = ({ children }) => (
   <ErrorBoundary>
-    <React.Suspense fallback={<span>Loading ...</span>}>
-      {children}
-    </React.Suspense>
+    <Suspense fallback={<span>Loading ...</span>}>{children}</Suspense>
   </ErrorBoundary>
 );

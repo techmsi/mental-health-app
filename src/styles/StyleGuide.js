@@ -1,10 +1,9 @@
-import React from 'react';
 import themeColors from 'styles/theme.json';
 import { Swatches } from 'styles/Swatches';
 
 const swatches = Object.entries(themeColors).map(([name, background]) => ({
   name,
-  background
+  background,
 }));
 const Swatch = ({ name, background }) => (
   <div key={name}>

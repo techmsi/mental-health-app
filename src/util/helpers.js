@@ -1,9 +1,9 @@
-export const createAnswerSet = len =>
-  [...Array(len).keys()].map(x => (++x).toString());
+export const createAnswerSet = (len) =>
+  [...Array(len).keys()].map((x) => (++x).toString());
 
 export const findByRange = (list, score) => {
   const checkRange = (min, max) => score >= min && score <= max;
-  const found = list.filter(obj => checkRange(obj.range.min, obj.range.max));
+  const found = list.filter((obj) => checkRange(obj.range.min, obj.range.max));
 
   return found[0];
 };
@@ -16,9 +16,9 @@ export const newArrayWithRemovedItem = (id, list) => {
     : list;
 };
 
-export const rand = n => Math.floor(Math.random() * n);
+export const rand = (n) => Math.floor(Math.random() * n);
 
-export const randomKey = arr => {
+export const randomKey = (arr) => {
   const keys = Object.keys(arr);
   const index = rand(keys.length);
 
@@ -26,12 +26,12 @@ export const randomKey = arr => {
 };
 
 export const findById = (arr, id) => {
-  const itemFound = arr && arr.length ? arr.filter(o => o.id === id)[0] : [];
+  const itemFound = arr && arr.length ? arr.filter((o) => o.id === id)[0] : [];
   console.debug('Item found', itemFound);
   return itemFound;
 };
 
-export const sortByKey = (arr, key, order = 'asc') =>
+export const sortByKey = (arr = [], key, order = 'asc') =>
   arr.sort((a, b) => {
     const x = a[key];
     const y = b[key];
@@ -55,7 +55,7 @@ export const updateItem = (arr, itemId, newItem) => {
     typeof itemId
   );
 
-  const updatedArray = arr.map(item =>
+  const updatedArray = arr.map((item) =>
     item.id === itemId ? { ...item, ...newItem } : item
   );
 

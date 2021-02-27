@@ -1,13 +1,12 @@
-import React from 'react';
 import { findById } from 'util/helpers';
 
 import { QuestionCard } from 'Questions/ui/dynamicRoutes';
 
 export const Question = ({
   match: {
-    params: { questionId }
+    params: { questionId },
   },
-  questionairre: { questions: list }
+  questionairre: { questions: list },
 }) => {
   console.debug('Question Card', list);
   return <QuestionCard {...findById(list, questionId)} />;

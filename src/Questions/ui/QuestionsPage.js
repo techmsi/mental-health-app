@@ -1,15 +1,14 @@
 // Component: QuestionsPage
-import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 import { Header, SubTitle } from 'styles/Layout';
 
 import { QuestionCard, UnansweredList } from 'Questions/ui/dynamicRoutes';
 
-const QuestionListCard = question => <QuestionCard {...question} />;
+const QuestionListCard = (question) => <QuestionCard {...question} />;
 
 const QuestionsPage = ({ list, questionnaire, ...props }) => {
-  const unanswered = list.filter(o => !o.answered);
+  const unanswered = list.filter((o) => !o.answered);
   const completed = list.length > 0 && unanswered.length === 0;
 
   if (completed) {
@@ -26,7 +25,7 @@ const QuestionsPage = ({ list, questionnaire, ...props }) => {
       {!completed && <UnansweredList unanswered={unanswered} />}
       <SubTitle className="subtitle">{questionnaire.subtitle}</SubTitle>
       <ul className="questions-list">
-        {list.map(question => (
+        {list.map((question) => (
           <QuestionListCard key={question.id} {...question} />
         ))}
       </ul>
