@@ -27,18 +27,18 @@ jobs:
         id: wait-for-netflify-preview
         with:
           site_name: 'phq9'
-      - name: Lighthouse CI
-        run: |
-          npm install -g @lhci/cli@0.7.x
-          lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"
+      - name: Audit URLs using Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v2
         with:
           urls: |
             $DEPLOY_URL/
             $DEPLOY_URL/questionnaire
             $DEPLOY_URL/therapists/list
             $DEPLOY_URL/therapists/1/details
-          runs: 1
-          budgetPath: ./perf/budget.json
+          runs: 1,
+          budgetPath: ./perf/budget.json # test performance budgets
+          uploadArtifacts: true # save results as an action artifacts
+          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
         env:
           DEPLOY_URL: ${{ steps.wait-for-netflify-preview.outputs.url }}
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
