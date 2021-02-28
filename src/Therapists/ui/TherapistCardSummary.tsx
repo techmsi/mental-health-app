@@ -1,6 +1,10 @@
-import React from 'react';
+import { ITherapistInfo } from './Therapist.interfaces';
 
-export const TherapistCardSummary = ({ specialty, name, email }) => (
+export const TherapistCardSummary = ({
+  specialty,
+  name,
+  email,
+}: ITherapistInfo) => (
   <>
     <div className="cityState">New York, NY</div>
     <h3 className="name">

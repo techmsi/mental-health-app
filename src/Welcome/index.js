@@ -1,15 +1,13 @@
 // Stateless Component: Welcome Page
-import React from 'react';
-
 import { Header } from 'styles/Layout';
 import {
   WelcomeShell,
   WelcomeText,
-  WelcomeButton
+  WelcomeButton,
 } from 'Welcome/ui/styles-Welcome';
 
-const Welcome = props => (
-  <WelcomeShell className='introduction'>
+const Welcome = (props) => (
+  <WelcomeShell className="introduction">
     <Header>
       <h1>Paitent Health Questionnaire (PHQ-9)</h1>
     </Header>
@@ -23,7 +21,7 @@ const Welcome = props => (
       it can be used to make a tentative diagnosis of depression in at-risk
       populations - eg, those with coronary heart disease or after stroke.
     </WelcomeText>
-    <WelcomeButton to='/questionnaire'> Begin Questionnaire</WelcomeButton>
+    <WelcomeButton to="/questionnaire"> Begin Questionnaire</WelcomeButton>
   </WelcomeShell>
 );
 

@@ -1,7 +1,5 @@
-import React from 'react';
-
 export const TherapistBio = () => (
-  <section className='bio'>
+  <section className="bio">
     <p>More details coming soon...</p>
     <p>
       rem ipsum dolor sit amet consectetur adipisicing elit.Delectus ipsam

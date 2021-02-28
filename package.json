@@ -11,6 +11,10 @@
   "author": "techmsi",
   "license": "ISC",
   "dependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.31",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
     "babel-plugin-styled-components": "*",
     "husky": "^5.1.1",
     "preact": "^10.x.x",
@@ -23,17 +27,21 @@
     "redux": "*",
     "redux-logger": "*",
     "redux-saga": "*",
-    "styled-components": "*"
+    "styled-components": "*",
+    "typescript": "^4.2.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "*",
     "@commitlint/cli": "*",
     "@commitlint/config-conventional": "*",
+    "@lhci/cli": "^0.7.0",
+    "@lhci/server": "^0.7.0",
     "chunk-manifest-webpack-plugin": "*",
     "commitizen": "*",
     "customize-cra": "*",
     "lighthouse": "*",
     "lint-staged": "*",
+    "local-web-server": "^4.2.1",
     "madge": "*",
     "prettier": "*",
     "prettier-semistandard": "*",
@@ -47,6 +55,7 @@
     "worker-loader": "*"
   },
   "scripts": {
+    "precz": "lint-staged",
     "cz": "git-cz",
     "crop": "node ./src/crop",
     "toWebP": "for file in ./public/images/headshots/*; do cwebp \"$file\" -o \"${file%.*}.webp\"; done",
@@ -60,7 +69,11 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "import/no-anonymous-default-export": "off",
+      "react/no-typos": "off"
+    }
   },
   "prettier": {
     "tabWidth": 2,

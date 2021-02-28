@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import { Provider } from 'react-redux';
 import throttle from 'lodash/throttle';
 
@@ -18,20 +18,20 @@ store.subscribe(
 
     if (questionnaire.questions) {
       questions = questionnaire.questions.map(({ answered, ...question }) => ({
-        ...question
+        ...question,
       }));
 
       saveState({
         therapists,
         questionnaire: {
           ...questionnaire,
-          ...{ questions }
-        }
+          ...{ questions },
+        },
       });
     } else {
       saveState({
         therapists,
-        questionnaire
+        questionnaire,
       });
     }
   }, 1000)
@@ -40,12 +40,12 @@ store.subscribe(
 export const Application = () => {
   console.debug('store ', store.getState());
   return (
-    <React.StrictMode>
+    <StrictMode>
       <Provider store={store}>
         <AppWithBoundary>
           <App />
         </AppWithBoundary>
       </Provider>
-    </React.StrictMode>
+    </StrictMode>
   );
 };

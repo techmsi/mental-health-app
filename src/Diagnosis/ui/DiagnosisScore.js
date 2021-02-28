@@ -1,15 +1,14 @@
-import React from 'react';
 import { PullQuote, Ranges } from 'Diagnosis/ui/styles-Diagnosis';
 
 export const ScoreRange = ({ min = 0, max = 27 }) => (
-  <Ranges className='ranges'>
+  <Ranges className="ranges">
     <em> {min} </em>
     <em> {max} </em>
   </Ranges>
 );
 
 export const ScoreTotal = ({ score, outOfScore }) => (
-  <span className='total'>
+  <span className="total">
     <em> {score || 0} </em> out of
     <em> {outOfScore || 0} </em>
   </span>

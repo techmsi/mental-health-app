@@ -1,11 +1,10 @@
 // Component: Therapist Routes
-import React from 'react';
 import { Route } from 'react-router-dom';
 
 import {
   TherapistChosenConnect,
   TherapistConnect,
-  TherapistListConnect
+  TherapistListConnect,
 } from 'Therapists/ui/dynamicRoutes';
 // List & Detail
 const TherapistRoutes = ({ match, ...props }) => {

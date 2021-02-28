@@ -1,18 +1,17 @@
-import React from 'react';
-
 import { TherapistCardGrid } from 'Therapists/ui/styles-Therapist';
 
 import {
   TherapistMenu,
   TherapistCardImage,
-  TherapistCardSummary
+  TherapistCardSummary,
 } from 'Therapists/ui/dynamicRoutes';
+import { ITherapist } from './Therapist.interfaces';
 
-export const TherapistListCard = (therapist, index) => (
-  <TherapistCardGrid key={therapist.id} className='therapist-item'>
+export const TherapistListCard = (therapist: ITherapist, cardIndex: number) => (
+  <TherapistCardGrid key={therapist.id} className="therapist-item">
     <TherapistMenu therapistId={therapist.id} />
     <TherapistCardImage
-      lazy={index > 0}
+      lazy={cardIndex > 0}
       image={therapist.image}
       name={therapist.name}
     />
