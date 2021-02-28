@@ -47,4 +47,4 @@ perf/graphs/*
 # Local Netlify folder
 .netlify
 # Local LighthouseCI folder
-.lighthouseci
+.lighthouseci/*
